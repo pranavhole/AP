@@ -42,8 +42,8 @@
 }
 
 .dot::before {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border: 1.8px solid var(--ink);
   border-radius: 50%;
   background: transparent;
@@ -88,7 +88,7 @@
   }
 
   .slide {
-    flex: 0 0 calc(100% - 18px);
+    flex: 0 0 calc(100% - 10px);
     scroll-snap-align: start;
   }
 
@@ -121,6 +121,6 @@
   }
 
   .dot {
-    width: 36px;
+    width: 44px;
   }
 }
