@@ -1,13 +1,16 @@
 export function WavyDivider({
   fill,
   flip = false,
+  className = "",
 }: {
   fill: string;
   flip?: boolean;
+  className?: string;
 }) {
   return (
     <svg
       aria-hidden="true"
+      className={className}
       preserveAspectRatio="none"
       style={{ rotate: flip ? "180deg" : undefined }}
       viewBox="0 0 1440 32"

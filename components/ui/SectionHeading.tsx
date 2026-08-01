@@ -16,7 +16,9 @@ export function SectionHeading({
       <h2 className={styles.heading}>{children}</h2>
       <span aria-hidden="true" className={styles.marker} />
       {decoration ? (
-        <span className={styles.decoration}>{decoration}</span>
+        <span aria-hidden="true" className={styles.decoration}>
+          {decoration}
+        </span>
       ) : null}
     </div>
   );

@@ -25,13 +25,13 @@ export function RoughButton({
     );
   }
 
-  const external = href.startsWith("http");
+  const external = /^https?:\/\//i.test(href);
 
   return (
     <a
       className={classes}
       href={href}
-      rel={external ? "noreferrer" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
       target={external ? "_blank" : undefined}
     >
       {children}
