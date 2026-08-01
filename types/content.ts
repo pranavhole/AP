@@ -9,6 +9,8 @@ export type Tone =
 
 export type CardVariant = 1 | 2 | 3 | 4;
 
+export type TechnologyMark = "react" | "node" | "python" | "postgres" | "aws";
+
 export type SketchIconName =
   | "laptop"
   | "phone"
@@ -59,6 +61,7 @@ export type Project = {
 export type Technology = {
   label: string;
   shortLabel: string;
+  mark: TechnologyMark;
   tone: Tone;
   variant: CardVariant;
 };

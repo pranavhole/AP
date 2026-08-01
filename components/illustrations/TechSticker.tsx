@@ -1,8 +1,8 @@
 import type { Technology } from "@/types/content";
 import styles from "./TechSticker.module.css";
 
-function TechMark({ label }: { label: string }) {
-  if (label.startsWith("React")) {
+function TechMark({ mark }: { mark: Technology["mark"] }) {
+  if (mark === "react") {
     return (
       <svg viewBox="0 0 48 34">
         <ellipse cx="24" cy="17" fill="none" rx="20" ry="7" />
@@ -27,7 +27,7 @@ function TechMark({ label }: { label: string }) {
     );
   }
 
-  if (label === "Node.js") {
+  if (mark === "node") {
     return (
       <svg viewBox="0 0 48 34">
         <path d="m24 2 18 10v12L24 32 6 23V11Z" fill="none" />
@@ -38,7 +38,7 @@ function TechMark({ label }: { label: string }) {
     );
   }
 
-  if (label === "Python") {
+  if (mark === "python") {
     return (
       <svg viewBox="0 0 48 34">
         <path
@@ -53,7 +53,7 @@ function TechMark({ label }: { label: string }) {
     );
   }
 
-  if (label === "PostgreSQL") {
+  if (mark === "postgres") {
     return (
       <svg viewBox="0 0 48 34">
         <ellipse cx="24" cy="8" fill="none" rx="15" ry="5" />
@@ -65,14 +65,19 @@ function TechMark({ label }: { label: string }) {
     );
   }
 
-  return (
-    <svg viewBox="0 0 48 34">
-      <text x="24" y="18" textAnchor="middle">
-        aws
-      </text>
-      <path d="M10 24c9 5 20 5 29 0" fill="none" />
-    </svg>
-  );
+  if (mark === "aws") {
+    return (
+      <svg viewBox="0 0 48 34">
+        <text x="24" y="18" textAnchor="middle">
+          aws
+        </text>
+        <path d="M10 24c9 5 20 5 29 0" fill="none" />
+      </svg>
+    );
+  }
+
+  const exhaustiveMark: never = mark;
+  return exhaustiveMark;
 }
 
 export function TechSticker({
@@ -83,12 +88,11 @@ export function TechSticker({
   className?: string;
 }) {
   return (
-    <div
-      aria-hidden="true"
-      className={`${styles.sticker} ${styles[technology.tone]} ${styles[`variant${technology.variant}`]} ${className}`}
-    >
-      <TechMark label={technology.label} />
-      <span>{technology.shortLabel}</span>
+    <div className={`${styles.sticker} ${styles[technology.tone]} ${styles[`variant${technology.variant}`]} ${className}`}>
+      <span aria-hidden="true" className={styles.mark}>
+        <TechMark mark={technology.mark} />
+      </span>
+      <span className={styles.label}>{technology.shortLabel}</span>
     </div>
   );
 }

@@ -31,7 +31,12 @@
   font-weight: 900;
 }
 
-.sticker span {
+.mark {
+  display: grid;
+  place-items: center;
+}
+
+.label {
   font-size: 0.75rem;
 }
 
@@ -57,6 +62,7 @@
 
 .purple {
   background: var(--purple);
+  color: #fff;
 }
 
 .coral {
@@ -109,7 +115,7 @@
     height: 25px;
   }
 
-  .sticker span {
+  .label {
     font-size: 0.62rem;
   }
 }
