@@ -1,0 +1,154 @@
+.art {
+  position: relative;
+  min-height: 510px;
+}
+
+.blob {
+  position: absolute;
+  right: 5%;
+  bottom: 2%;
+  width: 77%;
+  aspect-ratio: 1.25;
+  border-radius: 52% 48% 43% 57% / 58% 43% 57% 42%;
+  background: var(--yellow);
+}
+
+.character {
+  position: absolute;
+  right: -2%;
+  bottom: -2%;
+  z-index: 2;
+  width: 84%;
+  height: auto;
+  object-fit: contain;
+}
+
+.paths {
+  position: absolute;
+  inset: 4% 0 8%;
+  z-index: 1;
+  width: 100%;
+  height: 88%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--ink);
+  stroke-dasharray: 5 8;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.sticker1,
+.sticker2,
+.sticker3,
+.sticker4,
+.sticker5 {
+  position: absolute;
+  z-index: 4;
+}
+
+.sticker1 {
+  top: 7%;
+  left: 5%;
+}
+
+.sticker2 {
+  top: 0;
+  right: 20%;
+}
+
+.sticker3 {
+  top: 10%;
+  right: -3%;
+}
+
+.sticker4 {
+  top: 39%;
+  right: -8%;
+}
+
+.sticker5 {
+  top: 40%;
+  left: 1%;
+}
+
+.sparkle1,
+.sparkle2 {
+  position: absolute;
+  z-index: 5;
+  width: 28px;
+}
+
+.sparkle1 {
+  top: 27%;
+  left: -1%;
+}
+
+.sparkle2 {
+  top: 32%;
+  right: 8%;
+  color: var(--purple);
+}
+
+@media (max-width: 1024px) {
+  .art {
+    min-height: 440px;
+  }
+
+  .sticker4 {
+    right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .art {
+    min-height: 390px;
+    margin-top: 8px;
+  }
+
+  .character {
+    right: 2%;
+    width: 91%;
+  }
+
+  .sticker1 {
+    top: 12%;
+    left: 0;
+  }
+
+  .sticker2 {
+    top: 2%;
+    right: 22%;
+  }
+
+  .sticker3 {
+    top: 18%;
+    right: 0;
+  }
+
+  .sticker4 {
+    display: none;
+  }
+
+  .sticker5 {
+    top: 48%;
+    left: 0;
+  }
+
+  .paths {
+    opacity: 0.55;
+  }
+}
+
+@media (max-width: 390px) {
+  .art {
+    min-height: 340px;
+  }
+
+  .sticker3 {
+    right: -4%;
+  }
+
+  .sparkle2 {
+    display: none;
+  }
+}
