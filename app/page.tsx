@@ -7,6 +7,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { TrustStrip } from "@/components/sections/TrustStrip";
+import { Reveal } from "@/components/ui/Reveal";
 import { SkipLink } from "@/components/ui/SkipLink";
 
 export default function Home() {
@@ -17,11 +18,21 @@ export default function Home() {
       <main id="main-content">
         <HeroSection />
         <TrustStrip />
-        <ServicesSection />
-        <ProcessSection />
-        <FeaturedWork />
-        <AboutBanner />
-        <CTASection />
+        <Reveal>
+          <ServicesSection />
+        </Reveal>
+        <Reveal>
+          <ProcessSection />
+        </Reveal>
+        <Reveal>
+          <FeaturedWork />
+        </Reveal>
+        <Reveal>
+          <AboutBanner />
+        </Reveal>
+        <Reveal>
+          <CTASection />
+        </Reveal>
       </main>
       <Footer />
     </div>

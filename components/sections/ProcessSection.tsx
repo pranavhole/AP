@@ -1,5 +1,6 @@
 import { HandDrawnArrow } from "@/components/illustrations/HandDrawnArrow";
 import { SketchIcon } from "@/components/illustrations/SketchIcon";
+import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { processSteps } from "@/data/process";
 import type { CardVariant, ProcessTone } from "@/types/content";
@@ -30,14 +31,16 @@ export function ProcessSection() {
               className={`${styles.step} ${variantClasses[step.variant]}`}
               key={step.title}
             >
-              <span className={`${styles.icon} ${toneClasses[step.tone]}`}>
-                <SketchIcon name={step.icon} />
-              </span>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
-              {index < processSteps.length - 1 ? (
-                <HandDrawnArrow className={styles.connector} />
-              ) : null}
+              <Reveal delay={index * 0.08}>
+                <span className={`${styles.icon} ${toneClasses[step.tone]}`}>
+                  <SketchIcon name={step.icon} />
+                </span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+                {index < processSteps.length - 1 ? (
+                  <HandDrawnArrow className={styles.connector} />
+                ) : null}
+              </Reveal>
             </li>
           ))}
         </ol>

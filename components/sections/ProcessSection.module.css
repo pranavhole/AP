@@ -24,6 +24,13 @@
   text-align: center;
 }
 
+.step > div {
+  position: relative;
+  display: grid;
+  width: 100%;
+  justify-items: center;
+}
+
 .icon {
   display: grid;
   width: 132px;
