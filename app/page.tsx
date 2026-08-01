@@ -15,7 +15,7 @@ export default function Home() {
     <div className="page-shell">
       <SkipLink />
       <Header />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <HeroSection />
         <TrustStrip />
         <Reveal>

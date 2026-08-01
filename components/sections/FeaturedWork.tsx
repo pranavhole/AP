@@ -25,6 +25,7 @@ export function FeaturedWork() {
             <span
               aria-disabled="true"
               className={`${styles.viewAll} ${styles.viewAllDisabled}`}
+              role="link"
             >
               View All <span aria-hidden="true">→</span>
             </span>

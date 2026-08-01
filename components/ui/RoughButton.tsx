@@ -19,7 +19,7 @@ export function RoughButton({
 
   if (!href) {
     return (
-      <span aria-disabled="true" className={classes}>
+      <span aria-disabled="true" className={classes} role="link">
         {children}
       </span>
     );
