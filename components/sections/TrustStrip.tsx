@@ -6,9 +6,9 @@ import styles from "./TrustStrip.module.css";
 export function TrustStrip() {
   return (
     <section aria-label="Client commitments" className={styles.strip}>
-      <div className={`${styles.inner} section-inner`}>
+      <ul className={`${styles.inner} section-inner`}>
         {trustItems.map((item) => (
-          <div
+          <li
             className={`${styles.item} ${styles[`variant${item.variant}`]}`}
             key={item.label}
           >
@@ -16,9 +16,9 @@ export function TrustStrip() {
               <SketchIcon name={item.icon} />
             </span>
             <strong>{item.label}</strong>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

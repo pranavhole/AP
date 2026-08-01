@@ -106,8 +106,9 @@
   }
 
   .character {
-    right: 2%;
-    width: 91%;
+    right: 50%;
+    width: min(91%, 520px);
+    translate: 50% 0;
   }
 
   .sticker1 {

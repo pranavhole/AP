@@ -8,14 +8,10 @@ import styles from "./HeroArtwork.module.css";
 
 export function HeroArtwork() {
   return (
-    <div
-      aria-label="Illustration of a developer working at a laptop"
-      className={styles.art}
-      role="img"
-    >
+    <div className={styles.art}>
       <div aria-hidden="true" className={styles.blob} />
       <Image
-        alt=""
+        alt="Curly-haired developer in a purple hoodie working behind a PH laptop with a coding mug and plant"
         className={styles.character}
         height={1086}
         preload
@@ -23,13 +19,20 @@ export function HeroArtwork() {
         src="/images/developer-hero.png"
         width={1448}
       />
-      {technologies.map((technology, index) => (
-        <TechSticker
-          className={styles[`sticker${index + 1}`]}
-          key={technology.label}
-          technology={technology}
-        />
-      ))}
+      <div aria-hidden="true">
+        {technologies.map((technology, index) => (
+          <TechSticker
+            className={styles[`sticker${index + 1}`]}
+            key={technology.label}
+            technology={technology}
+          />
+        ))}
+      </div>
+      <ul aria-label="Technologies featured" className="sr-only">
+        {technologies.map((technology) => (
+          <li key={technology.label}>{technology.label}</li>
+        ))}
+      </ul>
       <svg
         aria-hidden="true"
         className={styles.paths}
