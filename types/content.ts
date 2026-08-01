@@ -7,6 +7,13 @@ export type Tone =
   | "purple"
   | "coral";
 
+export type ServiceTone = Extract<
+  Tone,
+  "yellow" | "mint" | "pink" | "lavender"
+>;
+
+export type ProcessTone = Extract<Tone, "yellow" | "mint" | "pink">;
+
 export type CardVariant = 1 | 2 | 3 | 4;
 
 export type TechnologyMark = "react" | "node" | "python" | "postgres" | "aws";
@@ -35,7 +42,7 @@ export type Service = {
   title: string;
   description: string;
   icon: SketchIconName;
-  tone: Tone;
+  tone: ServiceTone;
   variant: CardVariant;
 };
 
@@ -43,7 +50,7 @@ export type ProcessStep = {
   title: string;
   description: string;
   icon: SketchIconName;
-  tone: Tone;
+  tone: ProcessTone;
   variant: CardVariant;
 };
 
