@@ -15,7 +15,7 @@ export function HeroArtwork() {
         className={styles.character}
         height={1086}
         preload
-        sizes="(max-width: 767px) 92vw, (max-width: 1100px) 50vw, 620px"
+        sizes="(max-width: 600px) 86vw, (max-width: 767px) 520px, (max-width: 1100px) 50vw, 520px"
         src="/images/developer-hero.png"
         width={1448}
       />
