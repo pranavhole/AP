@@ -32,16 +32,14 @@ function getSlideOffset(viewport: HTMLDivElement, slide: HTMLElement) {
   );
 }
 
-export function ProjectCarousel({ children, count }: ProjectCarouselProps) {
+export function ProjectCarousel({ children }: ProjectCarouselProps) {
   const slides = Children.toArray(children);
-  const requestedCount = Number.isFinite(count)
-    ? Math.max(0, Math.trunc(count))
-    : slides.length;
-  const slideCount = Math.min(requestedCount, slides.length);
-  const renderedSlides = slides.slice(0, slideCount);
+  const slideCount = slides.length;
   const [active, setActive] = useState(0);
   const viewportRef = useRef<HTMLDivElement>(null);
   const scrollFrameRef = useRef<number | null>(null);
+  const scrollSettleRef = useRef<number | null>(null);
+  const programmaticTargetRef = useRef<number | null>(null);
   const reduceMotion = useReducedMotion();
   const boundedActive = Math.min(active, Math.max(0, slideCount - 1));
 
@@ -71,8 +69,16 @@ export function ProjectCarousel({ children, count }: ProjectCarouselProps) {
 
   const handleScroll = useCallback(
     (viewport: HTMLDivElement) => {
+      if (programmaticTargetRef.current !== null) {
+        return;
+      }
+
       if (scrollFrameRef.current !== null) {
         window.cancelAnimationFrame(scrollFrameRef.current);
+      }
+
+      if (scrollSettleRef.current !== null) {
+        window.clearTimeout(scrollSettleRef.current);
       }
 
       scrollFrameRef.current = window.requestAnimationFrame(() => {
@@ -87,6 +93,10 @@ export function ProjectCarousel({ children, count }: ProjectCarouselProps) {
     () => () => {
       if (scrollFrameRef.current !== null) {
         window.cancelAnimationFrame(scrollFrameRef.current);
+      }
+
+      if (scrollSettleRef.current !== null) {
+        window.clearTimeout(scrollSettleRef.current);
       }
     },
     [],
@@ -104,10 +114,26 @@ export function ProjectCarousel({ children, count }: ProjectCarouselProps) {
     setActive(next);
 
     if (viewport && slide) {
+      programmaticTargetRef.current = next;
       viewport.scrollTo({
         behavior: reduceMotion ? "auto" : "smooth",
         left: getSlideOffset(viewport, slide),
       });
+
+      if (reduceMotion) {
+        programmaticTargetRef.current = null;
+        syncActiveSlide(viewport);
+      } else {
+        if (scrollSettleRef.current !== null) {
+          window.clearTimeout(scrollSettleRef.current);
+        }
+
+        scrollSettleRef.current = window.setTimeout(() => {
+          programmaticTargetRef.current = null;
+          syncActiveSlide(viewport);
+          scrollSettleRef.current = null;
+        }, 600);
+      }
     }
   };
 
@@ -115,17 +141,14 @@ export function ProjectCarousel({ children, count }: ProjectCarouselProps) {
     <div className={styles.carousel}>
       <div
         aria-label="Featured projects"
-        aria-roledescription="carousel"
         className={styles.viewport}
         onScroll={(event) => handleScroll(event.currentTarget)}
         ref={viewportRef}
         role="region"
-        tabIndex={slideCount > 1 ? 0 : undefined}
       >
-        {renderedSlides.map((slide, index) => (
+        {slides.map((slide, index) => (
           <div
             aria-label={`${index + 1} of ${slideCount}`}
-            aria-roledescription="slide"
             className={styles.slide}
             data-project-slide
             key={index}
@@ -136,16 +159,24 @@ export function ProjectCarousel({ children, count }: ProjectCarouselProps) {
         ))}
       </div>
 
-      {slideCount > 0 ? (
+      {slideCount > 1 ? (
         <>
-          <p aria-atomic="true" aria-live="polite" className="sr-only">
-            Showing project {boundedActive + 1} of {slideCount}
-          </p>
+          <div aria-hidden="true" className={styles.desktopDots}>
+            {Array.from({ length: slideCount }, (_, index) => (
+              <span
+                className={index === boundedActive ? styles.desktopDotActive : undefined}
+                key={index}
+              />
+            ))}
+          </div>
           <div
             aria-label="Project carousel controls"
             className={styles.controls}
             role="group"
           >
+            <p aria-atomic="true" aria-live="polite" className="sr-only">
+              Showing project {boundedActive + 1} of {slideCount}
+            </p>
             <button
               aria-label="Previous project"
               className={styles.arrowButton}

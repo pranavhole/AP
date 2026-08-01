@@ -31,18 +31,6 @@
   padding: 8px 1px;
 }
 
-.active::after {
-  position: absolute;
-  right: 0;
-  bottom: 3px;
-  left: 0;
-  height: 2px;
-  rotate: -1deg;
-  border-radius: 50%;
-  background: var(--ink);
-  content: "";
-}
-
 .cta {
   justify-self: end;
 }

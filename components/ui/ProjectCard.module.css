@@ -62,13 +62,13 @@
   background: var(--lavender);
 }
 
-.card:focus-visible {
+a.card:focus-visible {
   box-shadow: 6px 7px 0 rgb(17 17 17 / 16%);
   rotate: 0deg;
   translate: 0 -4px;
 }
 
-.card:focus-visible img {
+a.card:focus-visible img {
   scale: 1.025;
 }
 
@@ -91,13 +91,13 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .card:hover {
+  a.card:hover {
     box-shadow: 6px 7px 0 rgb(17 17 17 / 16%);
     rotate: 0deg;
     translate: 0 -4px;
   }
 
-  .card:hover img {
+  a.card:hover img {
     scale: 1.025;
   }
 }

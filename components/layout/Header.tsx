@@ -14,12 +14,8 @@ export function Header() {
       <div className={styles.inner}>
         <BrandLockup compact />
         <nav aria-label="Primary navigation" className={styles.nav}>
-          {navigation.map((link, index) => (
-            <a
-              className={index === 0 ? styles.active : undefined}
-              href={link.href}
-              key={link.href}
-            >
+          {navigation.map((link) => (
+            <a href={link.href} key={link.href}>
               {link.label}
             </a>
           ))}

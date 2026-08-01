@@ -13,11 +13,30 @@
 }
 
 .controls {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   gap: 7px;
   margin-top: 14px;
+}
+
+.desktopDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.desktopDots span {
+  width: 11px;
+  height: 11px;
+  border: 1.8px solid var(--ink);
+  border-radius: 50%;
+}
+
+.desktopDots .desktopDotActive {
+  background: var(--ink);
 }
 
 .arrowButton {
@@ -93,8 +112,13 @@
   }
 
   .controls {
+    display: flex;
     gap: 10px;
     margin-top: 4px;
+  }
+
+  .desktopDots {
+    display: none;
   }
 
   .arrowButton {

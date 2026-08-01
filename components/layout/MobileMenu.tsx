@@ -37,6 +37,28 @@ export function MobileMenu({ links }: { links: readonly NavItem[] }) {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         close(true);
+        return;
+      }
+
+      if (event.key === "Tab") {
+        const focusable = rootRef.current?.querySelectorAll<HTMLElement>(
+          "button:not([disabled]), a[href]",
+        );
+
+        if (!focusable?.length) {
+          return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     };
 
@@ -56,6 +78,18 @@ export function MobileMenu({ links }: { links: readonly NavItem[] }) {
       document.removeEventListener("pointerdown", onPointerDown);
     };
   }, [close, open]);
+
+  useEffect(() => {
+    const mobileViewport = window.matchMedia("(max-width: 850px)");
+    const onViewportChange = (event: MediaQueryListEvent) => {
+      if (!event.matches) {
+        close(false);
+      }
+    };
+
+    mobileViewport.addEventListener("change", onViewportChange);
+    return () => mobileViewport.removeEventListener("change", onViewportChange);
+  }, [close]);
 
   return (
     <div className={styles.root} ref={rootRef}>
