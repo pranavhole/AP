@@ -42,6 +42,7 @@ export default function OpenGraphImage() {
             display: "flex",
             fontSize: 104,
             fontWeight: 900,
+            flexShrink: 0,
             height: 220,
             justifyContent: "center",
             width: 220,
@@ -52,8 +53,10 @@ export default function OpenGraphImage() {
         <div
           style={{
             display: "flex",
+            flex: 1,
             flexDirection: "column",
             gap: "18px",
+            minWidth: 0,
           }}
         >
           <div style={{ fontSize: 72, fontWeight: 900 }}>Pranav Hole</div>
