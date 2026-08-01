@@ -1,8 +1,10 @@
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || null;
+
 export const siteConfig = {
   name: "Pranav Hole",
   initials: "PH",
   role: "Freelance Full-Stack Consultant",
-  siteUrl: null as string | null,
+  siteUrl: configuredSiteUrl,
   contactActionsEnabled: false,
   contact: {
     email: null as string | null,

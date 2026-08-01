@@ -17,7 +17,11 @@ const bodyFont = Nunito_Sans({
   variable: "--font-body",
 });
 
-const metadataBase = siteConfig.siteUrl ? new URL(siteConfig.siteUrl) : undefined;
+const vercelHost =
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL;
+const deploymentSiteUrl =
+  siteConfig.siteUrl ?? (vercelHost ? `https://${vercelHost}` : null);
+const metadataBase = new URL(deploymentSiteUrl ?? "http://localhost:3000");
 const title = "Pranav Hole — Freelance Full-Stack Consultant";
 const description =
   "Pranav Hole builds thoughtful web, mobile, AI, and cloud products from idea to growth.";
@@ -42,7 +46,8 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: { card: "summary_large_image", description, title },
-  ...(metadataBase ? { alternates: { canonical: "/" }, metadataBase } : {}),
+  metadataBase,
+  ...(deploymentSiteUrl ? { alternates: { canonical: "/" } } : {}),
 };
 
 export const viewport: Viewport = {
