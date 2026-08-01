@@ -48,7 +48,7 @@ export function Footer() {
       <div className={`${styles.inner} section-inner`}>
         <BrandLockup />
 
-        <nav aria-label="Footer navigation">
+        <nav aria-label="Footer navigation" className={styles.footerNav}>
           {navigation
             .filter((item) => item.label !== "Process")
             .map((item) => (
@@ -68,7 +68,12 @@ export function Footer() {
 
             if (!href) {
               return (
-                <span aria-disabled="true" aria-label={label} key={label}>
+                <span
+                  aria-disabled="true"
+                  aria-label={`${label} unavailable`}
+                  key={label}
+                  role="link"
+                >
                   {content}
                 </span>
               );
