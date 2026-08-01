@@ -1,0 +1,126 @@
+.carousel {
+  min-width: 0;
+}
+
+.viewport {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.slide {
+  min-width: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.arrowButton {
+  display: none;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  position: relative;
+  display: grid;
+  width: 44px;
+  min-height: 44px;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dot::before {
+  width: 10px;
+  height: 10px;
+  border: 1.8px solid var(--ink);
+  border-radius: 50%;
+  background: transparent;
+  content: "";
+  transition:
+    background-color 160ms ease,
+    scale 160ms ease;
+}
+
+.dot[aria-current="true"]::before {
+  background: var(--ink);
+  scale: 1.08;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dot:hover::before {
+    background: var(--lavender);
+    scale: 1.13;
+  }
+
+  .dot[aria-current="true"]:hover::before {
+    background: var(--ink);
+  }
+}
+
+@media (max-width: 767px) {
+  .viewport {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 6px 4px 18px;
+    scroll-behavior: smooth;
+    scroll-padding-inline: 4px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slide {
+    flex: 0 0 calc(100% - 18px);
+    scroll-snap-align: start;
+  }
+
+  .controls {
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .arrowButton {
+    display: grid;
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    aspect-ratio: 1;
+    place-items: center;
+    border: 2px solid var(--ink);
+    border-radius: 50% 44% 54% 46%;
+    background: var(--cream);
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .arrowButton:disabled {
+    cursor: default;
+    opacity: 0.38;
+  }
+
+  .dots {
+    gap: 0;
+  }
+
+  .dot {
+    width: 36px;
+  }
+}
