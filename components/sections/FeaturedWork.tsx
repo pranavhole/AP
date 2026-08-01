@@ -30,7 +30,7 @@ export function FeaturedWork() {
             </span>
           )}
         </div>
-        <ProjectCarousel count={projects.length}>
+        <ProjectCarousel>
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}

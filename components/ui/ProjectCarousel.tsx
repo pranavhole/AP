@@ -15,7 +15,6 @@ import styles from "./ProjectCarousel.module.css";
 
 type ProjectCarouselProps = {
   children: ReactNode;
-  count: number;
 };
 
 function getSlideElements(viewport: HTMLDivElement) {
@@ -67,9 +66,51 @@ export function ProjectCarousel({ children }: ProjectCarouselProps) {
     );
   }, []);
 
+  const settleProgrammaticScroll = useCallback(
+    (viewport: HTMLDivElement) => {
+      programmaticTargetRef.current = null;
+
+      if (scrollSettleRef.current !== null) {
+        window.clearTimeout(scrollSettleRef.current);
+        scrollSettleRef.current = null;
+      }
+
+      syncActiveSlide(viewport);
+    },
+    [syncActiveSlide],
+  );
+
+  const cancelProgrammaticScroll = useCallback(() => {
+    const viewport = viewportRef.current;
+
+    if (!viewport || programmaticTargetRef.current === null) {
+      return;
+    }
+
+    settleProgrammaticScroll(viewport);
+  }, [settleProgrammaticScroll]);
+
   const handleScroll = useCallback(
     (viewport: HTMLDivElement) => {
       if (programmaticTargetRef.current !== null) {
+        const target = getSlideElements(viewport)[programmaticTargetRef.current];
+
+        if (
+          target &&
+          Math.abs(getSlideOffset(viewport, target) - viewport.scrollLeft) <= 1
+        ) {
+          settleProgrammaticScroll(viewport);
+          return;
+        }
+
+        if (scrollSettleRef.current !== null) {
+          window.clearTimeout(scrollSettleRef.current);
+        }
+
+        scrollSettleRef.current = window.setTimeout(
+          () => settleProgrammaticScroll(viewport),
+          120,
+        );
         return;
       }
 
@@ -77,20 +118,27 @@ export function ProjectCarousel({ children }: ProjectCarouselProps) {
         window.cancelAnimationFrame(scrollFrameRef.current);
       }
 
-      if (scrollSettleRef.current !== null) {
-        window.clearTimeout(scrollSettleRef.current);
-      }
-
       scrollFrameRef.current = window.requestAnimationFrame(() => {
         syncActiveSlide(viewport);
         scrollFrameRef.current = null;
       });
     },
-    [syncActiveSlide],
+    [settleProgrammaticScroll, syncActiveSlide],
   );
 
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    const handleScrollEnd = () => {
+      if (viewport && programmaticTargetRef.current !== null) {
+        settleProgrammaticScroll(viewport);
+      }
+    };
+
+    viewport?.addEventListener("scrollend", handleScrollEnd);
+
+    return () => {
+      viewport?.removeEventListener("scrollend", handleScrollEnd);
+
       if (scrollFrameRef.current !== null) {
         window.cancelAnimationFrame(scrollFrameRef.current);
       }
@@ -98,9 +146,8 @@ export function ProjectCarousel({ children }: ProjectCarouselProps) {
       if (scrollSettleRef.current !== null) {
         window.clearTimeout(scrollSettleRef.current);
       }
-    },
-    [],
-  );
+    };
+  }, [settleProgrammaticScroll]);
 
   const goTo = (index: number) => {
     if (slideCount === 0) {
@@ -121,18 +168,7 @@ export function ProjectCarousel({ children }: ProjectCarouselProps) {
       });
 
       if (reduceMotion) {
-        programmaticTargetRef.current = null;
-        syncActiveSlide(viewport);
-      } else {
-        if (scrollSettleRef.current !== null) {
-          window.clearTimeout(scrollSettleRef.current);
-        }
-
-        scrollSettleRef.current = window.setTimeout(() => {
-          programmaticTargetRef.current = null;
-          syncActiveSlide(viewport);
-          scrollSettleRef.current = null;
-        }, 600);
+        settleProgrammaticScroll(viewport);
       }
     }
   };
@@ -142,7 +178,10 @@ export function ProjectCarousel({ children }: ProjectCarouselProps) {
       <div
         aria-label="Featured projects"
         className={styles.viewport}
+        onPointerDown={cancelProgrammaticScroll}
         onScroll={(event) => handleScroll(event.currentTarget)}
+        onTouchStart={cancelProgrammaticScroll}
+        onWheel={cancelProgrammaticScroll}
         ref={viewportRef}
         role="region"
       >
