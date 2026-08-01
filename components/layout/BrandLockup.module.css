@@ -1,0 +1,40 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1;
+}
+
+.brand strong {
+  font-family: var(--font-heading), cursive;
+  font-size: 2.65rem;
+  letter-spacing: -0.08em;
+}
+
+.brand span {
+  display: grid;
+  gap: 3px;
+}
+
+.brand b {
+  font-size: 0.85rem;
+}
+
+.brand small {
+  font-size: 0.58rem;
+  font-weight: 700;
+}
+
+.compact strong {
+  font-size: 2.25rem;
+}
+
+@media (max-width: 430px) {
+  .brand small {
+    display: none;
+  }
+
+  .brand b {
+    font-size: 0.72rem;
+  }
+}
