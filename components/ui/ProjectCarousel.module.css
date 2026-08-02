@@ -94,9 +94,9 @@
     gap: 16px;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
-    padding: 6px 4px 18px;
+    padding: 12px 8px 18px;
     scroll-behavior: smooth;
-    scroll-padding-inline: 4px;
+    scroll-padding-inline: 8px;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
