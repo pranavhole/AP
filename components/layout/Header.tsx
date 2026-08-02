@@ -15,7 +15,12 @@ export function Header() {
         <BrandLockup compact />
         <nav aria-label="Primary navigation" className={styles.nav}>
           {navigation.map((link) => (
-            <a href={link.href} key={link.href}>
+            <a
+              aria-current={link.href === "#home" ? "page" : undefined}
+              className={link.href === "#home" ? styles.active : undefined}
+              href={link.href}
+              key={link.href}
+            >
               {link.label}
             </a>
           ))}

@@ -4,7 +4,7 @@ A responsive Next.js 16 portfolio with a custom hand-drawn comic aesthetic, gene
 
 ## Requirements
 
-- Node.js 20 or newer
+- Node.js 20.9 or newer
 - npm
 
 ## Development
