@@ -49,7 +49,7 @@ Seeds come from stable semantic identifiers such as `button-lets-talk`, `service
 
 ## Visual behavior
 
-- Edges should drift subtly by roughly 0.5–1.5% of the normalized box size.
+- Normalized path jitter is axis-aware: roughly 0.1–0.3% horizontally and 0.3–0.8% vertically, producing a visible drift of only a few CSS pixels on typical cards and banners.
 - Corners should vary independently but remain comfortably rounded and usable.
 - Border distortion must be visible at desktop size without looking damaged or distracting.
 - Narrow layouts may use slightly reduced distortion to avoid perceived clipping.
