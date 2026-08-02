@@ -12,7 +12,7 @@ import { SkipLink } from "@/components/ui/SkipLink";
 
 export default function Home() {
   return (
-    <div className="page-shell">
+    <div className="w-full overflow-clip">
       <SkipLink />
       <Header />
       <main id="main-content" tabIndex={-1}>

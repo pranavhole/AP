@@ -5,7 +5,6 @@ import { navigation } from "@/data/navigation";
 import { pageContent } from "@/data/page-content";
 
 import { BrandLockup } from "./BrandLockup";
-import styles from "./Footer.module.css";
 
 function GitHubMark() {
   return (
@@ -44,11 +43,14 @@ const socialItems = [
 
 export function Footer() {
   return (
-    <footer className={styles.footer}>
-      <div className={`${styles.inner} section-inner`}>
+    <footer className="border-t-[2.5px] border-ink bg-soft-pink py-[26px] max-[520px]:py-[30px]">
+      <div className="mx-auto grid w-[calc(100%_-_40px)] max-w-[1280px] grid-cols-[1fr_auto_1fr] items-center gap-6 max-[800px]:grid-cols-[1fr_auto] max-[520px]:grid-cols-1 max-[520px]:justify-items-center max-[520px]:text-center max-md:w-[calc(100%_-_28px)]">
         <BrandLockup />
 
-        <nav aria-label="Footer navigation" className={styles.footerNav}>
+        <nav
+          aria-label="Footer navigation"
+          className="flex gap-[25px] font-hand font-extrabold max-[800px]:col-span-full max-[800px]:row-start-2 max-[800px]:justify-center max-[520px]:col-auto max-[520px]:row-auto max-[520px]:flex-wrap max-[520px]:gap-x-5 max-[520px]:gap-y-[13px]"
+        >
           {navigation
             .filter((item) => item.label !== "Process")
             .map((item) => (
@@ -58,7 +60,10 @@ export function Footer() {
             ))}
         </nav>
 
-        <nav aria-label="Social links" className={styles.socials}>
+        <nav
+          aria-label="Social links"
+          className="flex justify-end gap-0.5 max-[520px]:justify-center"
+        >
           {socialItems.map(({ label, href, icon: Icon }) => {
             const content = Icon ? (
               <Icon />
@@ -71,6 +76,7 @@ export function Footer() {
                 <span
                   aria-disabled="true"
                   aria-label={`${label} unavailable`}
+                  className="grid min-h-11 w-11 place-items-center rounded-full opacity-[0.62] [&_svg]:h-5 [&_svg]:w-5"
                   key={label}
                   role="link"
                 >
@@ -84,6 +90,7 @@ export function Footer() {
             return (
               <a
                 aria-label={label}
+                className="grid min-h-11 w-11 place-items-center rounded-full transition-[background-color_160ms_ease,translate_160ms_ease] hover:-translate-y-0.5 hover:bg-white/40 focus-visible:-translate-y-0.5 focus-visible:bg-white/40 [&_svg]:h-5 [&_svg]:w-5"
                 href={href}
                 key={label}
                 rel={external ? "noopener noreferrer" : undefined}
@@ -95,7 +102,9 @@ export function Footer() {
           })}
         </nav>
 
-        <small>{pageContent.copyright}</small>
+        <small className="col-span-full -mt-1 justify-self-center font-bold max-[520px]:col-auto max-[520px]:mt-1">
+          {pageContent.copyright}
+        </small>
       </div>
     </footer>
   );

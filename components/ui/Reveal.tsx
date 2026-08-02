@@ -6,8 +6,6 @@ import {
   useRef,
 } from "react";
 
-import styles from "./Reveal.module.css";
-
 type RevealProps = {
   children: ReactNode;
   className?: string;
@@ -123,7 +121,7 @@ export function Reveal({
 
   return (
     <div
-      className={`${styles.reveal} ${className}`.trim()}
+      className={`data-[reveal-state=pending]:translate-y-[18px] data-[reveal-state=pending]:opacity-0 data-[reveal-state=visible]:translate-y-0 data-[reveal-state=visible]:opacity-100 data-[reveal-state=pending]:focus-within:translate-y-0 data-[reveal-state=pending]:focus-within:opacity-100 motion-reduce:data-[reveal-state]:transform-none motion-reduce:data-[reveal-state]:opacity-100 motion-reduce:data-[reveal-state]:transition-none ${className}`.trim()}
       ref={elementRef}
     >
       {children}
