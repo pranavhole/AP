@@ -11,11 +11,12 @@
   align-items: center;
   gap: 30px;
   overflow: hidden;
-  border: 2.5px solid var(--ink);
-  border-radius: 15px 10px 17px 12px;
+  border: 2.5px solid transparent;
+  border-radius: var(--hand-radius);
   background-color: var(--lavender);
   padding: 28px 36px 24px 0;
-  box-shadow: 3px 4px 0 rgb(118 83 216 / 25%);
+  box-shadow: var(--hand-shadow-x) var(--hand-shadow-y) 0
+    rgb(118 83 216 / 25%);
 }
 
 .character {
