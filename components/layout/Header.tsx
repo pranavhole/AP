@@ -79,7 +79,7 @@ export function Header() {
           ))}
         </nav>
         <div className="relative z-[1] justify-self-end rotate-[0.45deg] max-[1024px]:hidden"><TalkSticker /></div>
-        <div className="relative z-[1]"><MobileMenu links={navigation} /></div>
+        <div className="z-[1]"><MobileMenu links={navigation} /></div>
       </div>
     </header>
   );
