@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site";
 import "./globals.css";
 
 const headingFont = Patrick_Hand({
+  display: "optional",
   subsets: ["latin"],
   variable: "--font-heading",
   weight: "400",
