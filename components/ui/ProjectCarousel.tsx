@@ -14,6 +14,29 @@ type ProjectCarouselProps = {
   children: ReactNode;
 };
 
+const dotPaths = [
+  "M11 2C18 1 23 6 22 13c-1 7-6 11-13 10C3 22 1 17 2 10 3 5 6 3 11 2Z",
+  "M10 2C16 0 22 4 23 10c1 7-3 12-10 13C6 24 2 20 2 13 2 7 5 3 10 2Z",
+  "M12 2C19 2 23 7 22 14c-1 6-6 10-12 9C4 22 1 17 3 10 4 5 7 2 12 2Z",
+] as const;
+
+function CarouselDot({ active, index }: { active: boolean; index: number }) {
+  return (
+    <svg aria-hidden="true" className={`h-4 w-4 ${index === 1 ? "-translate-y-px" : ""}`} viewBox="0 0 25 25">
+      <path d={dotPaths[index % dotPaths.length]} fill={active ? "#111" : "#fff9e9"} stroke="#111" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function ArrowButtonPaper() {
+  return (
+    <svg aria-hidden="true" className="absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 50 50">
+      <path d="M24 3C38 2 47 12 46 26 45 40 36 47 22 46 9 45 3 36 4 23 5 10 12 4 24 3Z" fill="#7653d8" opacity=".28" transform="translate(2 3)" />
+      <path d="M24 3C38 2 47 12 46 26 45 40 36 47 22 46 9 45 3 36 4 23 5 10 12 4 24 3Z" fill="#fff9e9" stroke="#111" strokeWidth="2.2" />
+    </svg>
+  );
+}
+
 function getSlideElements(viewport: HTMLDivElement) {
   return Array.from(
     viewport.querySelectorAll<HTMLElement>("[data-project-slide]"),
@@ -176,7 +199,7 @@ export function ProjectCarousel({ children }: ProjectCarouselProps) {
     <div className="min-w-0">
       <div
         aria-label="Featured projects"
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-2 pt-3 pb-[18px] scroll-smooth [scroll-padding-inline:8px] [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-3 md:gap-[26px] md:overflow-visible md:p-0"
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-2 pt-3 pb-[18px] scroll-smooth [scroll-padding-inline:8px] [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 sm:gap-x-7 sm:gap-y-10 sm:overflow-visible sm:p-0 sm:[&_[data-project-slide]:nth-child(3)]:col-span-2 sm:[&_[data-project-slide]:nth-child(3)]:mx-auto sm:[&_[data-project-slide]:nth-child(3)]:w-[54%] lg:grid-cols-[1.01fr_.98fr_1.03fr] lg:items-start lg:gap-[clamp(22px,2.3vw,34px)] lg:[&_[data-project-slide]:nth-child(2)]:-translate-y-2 lg:[&_[data-project-slide]:nth-child(3)]:col-span-1 lg:[&_[data-project-slide]:nth-child(3)]:mx-0 lg:[&_[data-project-slide]:nth-child(3)]:w-auto"
         onPointerDown={cancelProgrammaticScroll}
         onScroll={(event) => handleScroll(event.currentTarget)}
         onTouchStart={cancelProgrammaticScroll}
@@ -187,7 +210,7 @@ export function ProjectCarousel({ children }: ProjectCarouselProps) {
         {slides.map((slide, index) => (
           <div
             aria-label={`${index + 1} of ${slideCount}`}
-            className="min-w-0 flex-[0_0_calc(100%_-_10px)] snap-start md:flex-auto"
+            className="min-w-0 flex-[0_0_calc(100%_-_18px)] snap-start sm:flex-auto"
             data-project-slide
             key={index}
             role="group"
@@ -201,18 +224,15 @@ export function ProjectCarousel({ children }: ProjectCarouselProps) {
         <>
           <div
             aria-hidden="true"
-            className="mt-[22px] hidden items-center justify-center gap-2 md:flex"
+            className="mt-7 hidden items-center justify-center gap-[9px] sm:flex"
           >
             {Array.from({ length: slideCount }, (_, index) => (
-              <span
-                className={`h-[11px] w-[11px] rounded-full border-[1.8px] border-ink ${index === boundedActive ? "bg-ink" : ""}`}
-                key={index}
-              />
+              <CarouselDot active={index === boundedActive} index={index} key={index} />
             ))}
           </div>
           <div
             aria-label="Project carousel controls"
-            className="mt-1 flex items-center justify-center gap-2.5 md:hidden"
+            className="mt-2 flex items-center justify-center gap-2.5 sm:hidden"
             role="group"
           >
             <p aria-atomic="true" aria-live="polite" className="sr-only">
@@ -220,33 +240,37 @@ export function ProjectCarousel({ children }: ProjectCarouselProps) {
             </p>
             <button
               aria-label="Previous project"
-              className="grid aspect-square min-h-11 w-11 min-w-11 cursor-pointer place-items-center rounded-[50%_44%_54%_46%] border-2 border-ink bg-cream p-0 disabled:cursor-default disabled:opacity-[0.38]"
+              className="relative isolate grid aspect-square min-h-11 w-11 min-w-11 cursor-pointer place-items-center border-0 bg-transparent p-0 disabled:cursor-default disabled:opacity-[0.38]"
               disabled={boundedActive === 0}
               onClick={() => goTo(boundedActive - 1)}
               type="button"
             >
-              <ArrowLeft aria-hidden="true" size={20} strokeWidth={2.4} />
+              <ArrowButtonPaper />
+              <ArrowLeft aria-hidden="true" className="relative z-[1]" size={20} strokeWidth={2.4} />
             </button>
             <div className="flex items-center">
               {Array.from({ length: slideCount }, (_, index) => (
                 <button
                   aria-current={boundedActive === index ? "true" : undefined}
                   aria-label={`Show project ${index + 1}`}
-                  className="relative grid min-h-11 w-11 cursor-pointer place-items-center border-0 bg-transparent p-0 before:h-[11px] before:w-[11px] before:rounded-full before:border-[1.8px] before:border-ink before:bg-transparent before:content-[''] before:transition-[background-color_160ms_ease,scale_160ms_ease] hover:before:scale-[1.13] hover:before:bg-lavender aria-[current=true]:before:scale-[1.08] aria-[current=true]:before:bg-ink aria-[current=true]:hover:before:bg-ink"
+                  className="relative grid min-h-11 w-11 cursor-pointer place-items-center border-0 bg-transparent p-0 transition-transform hover:scale-110 motion-reduce:transition-none"
                   key={index}
                   onClick={() => goTo(index)}
                   type="button"
-                />
+                >
+                  <CarouselDot active={boundedActive === index} index={index} />
+                </button>
               ))}
             </div>
             <button
               aria-label="Next project"
-              className="grid aspect-square min-h-11 w-11 min-w-11 cursor-pointer place-items-center rounded-[50%_44%_54%_46%] border-2 border-ink bg-cream p-0 disabled:cursor-default disabled:opacity-[0.38]"
+              className="relative isolate grid aspect-square min-h-11 w-11 min-w-11 cursor-pointer place-items-center border-0 bg-transparent p-0 disabled:cursor-default disabled:opacity-[0.38]"
               disabled={boundedActive === slideCount - 1}
               onClick={() => goTo(boundedActive + 1)}
               type="button"
             >
-              <ArrowRight aria-hidden="true" size={20} strokeWidth={2.4} />
+              <ArrowButtonPaper />
+              <ArrowRight aria-hidden="true" className="relative z-[1]" size={20} strokeWidth={2.4} />
             </button>
           </div>
         </>
