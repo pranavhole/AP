@@ -90,26 +90,30 @@
 
 .variant1 {
   --card-shadow: #d8bd56;
+  --card-mobile-tilt: -0.65deg;
 
-  rotate: -0.65deg;
+  rotate: -1.2deg;
 }
 
 .variant2 {
   --card-shadow: #79bda7;
+  --card-mobile-tilt: 0.55deg;
 
-  rotate: 0.45deg;
+  rotate: 1.05deg;
 }
 
 .variant3 {
   --card-shadow: #c97880;
+  --card-mobile-tilt: -0.5deg;
 
-  rotate: -0.35deg;
+  rotate: -0.95deg;
 }
 
 .variant4 {
   --card-shadow: #9275ba;
+  --card-mobile-tilt: 0.6deg;
 
-  rotate: 0.6deg;
+  rotate: 1.15deg;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -150,6 +154,6 @@
 
   .card {
     min-height: 248px;
-    rotate: 0deg;
+    rotate: var(--card-mobile-tilt);
   }
 }
