@@ -15,7 +15,7 @@
   animation: sticker-float 7s ease-in-out infinite;
 }
 
-.sticker svg {
+.mark svg {
   width: 46px;
   height: 34px;
   overflow: visible;
@@ -108,7 +108,7 @@
     padding: 6px;
   }
 
-  .sticker svg {
+  .mark svg {
     width: 33px;
     height: 25px;
   }
