@@ -13,11 +13,16 @@ export function HandDrawnBorder({
   strength?: HandDrawnBorderStrength;
 }) {
   const geometry = createHandDrawnBorder(seed, strength);
+  const echoGeometry = createHandDrawnBorder(`${seed}:echo`, strength);
+  const echoStrokeWidth = Number(
+    (echoGeometry.strokeWidth * 0.58).toFixed(2),
+  );
+  const strengthClass = strength === "regular" ? "" : styles[strength];
 
   return (
     <svg
       aria-hidden="true"
-      className={`${styles.border} ${styles[strength]}`}
+      className={`${styles.border} ${strengthClass}`.trim()}
       data-hand-drawn-seed={seed}
       focusable="false"
       preserveAspectRatio="none"
@@ -25,9 +30,8 @@ export function HandDrawnBorder({
     >
       <path
         className={styles.echo}
-        d={geometry.path}
-        strokeWidth={geometry.strokeWidth * 0.58}
-        transform="translate(0.28 -0.2)"
+        d={echoGeometry.path}
+        strokeWidth={echoStrokeWidth}
         vectorEffect="non-scaling-stroke"
       />
       <path

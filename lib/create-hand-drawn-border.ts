@@ -25,6 +25,8 @@ const amplitudes: Record<
   bold: { x: 0.28, y: 0.75 },
 };
 
+const borderInset = 2;
+
 function hashSeed(seed: string) {
   let hash = 2166136261;
 
@@ -50,6 +52,9 @@ function createSeededRandom(seed: number) {
 
 const tidy = (value: number) => Number(value.toFixed(2));
 
+const clamp = (value: number, minimum: number, maximum: number) =>
+  Math.min(maximum, Math.max(minimum, value));
+
 export function createHandDrawnBorder(
   seed: string,
   strength: HandDrawnBorderStrength = "regular",
@@ -58,43 +63,51 @@ export function createHandDrawnBorder(
   const amplitude = amplitudes[strength];
   const edgeX = 0.2;
   const edgeY = 0.55;
+  const pathEdgeX = edgeX + amplitude.x;
+  const pathEdgeY = edgeY + amplitude.y;
   const jitterX = () => (random() * 2 - 1) * amplitude.x;
   const jitterY = () => (random() * 2 - 1) * amplitude.y;
-  const x = (value: number) => tidy(value + jitterX());
-  const y = (value: number) => tidy(value + jitterY());
+  const x = (value: number) =>
+    tidy(clamp(value + jitterX(), edgeX, 100 - edgeX));
+  const y = (value: number) =>
+    tidy(clamp(value + jitterY(), edgeY, 100 - edgeY));
   const cornerX = () => tidy(1.2 + random() * 0.9);
   const cornerY = () => tidy(3.2 + random() * 2.4);
   const topLeft = { x: cornerX(), y: cornerY() };
   const topRight = { x: cornerX(), y: cornerY() };
   const bottomRight = { x: cornerX(), y: cornerY() };
   const bottomLeft = { x: cornerX(), y: cornerY() };
-  const topY = y(edgeY);
-  const rightX = x(100 - edgeX);
-  const bottomY = y(100 - edgeY);
-  const leftX = x(edgeX);
+  const topY = y(pathEdgeY);
+  const rightX = x(100 - pathEdgeX);
+  const bottomY = y(100 - pathEdgeY);
+  const leftX = x(pathEdgeX);
 
   const path = [
     `M ${topLeft.x} ${topY}`,
-    `C ${x(29)} ${y(edgeY)}, ${x(69)} ${y(edgeY)}, ${100 - topRight.x} ${y(edgeY)}`,
-    `Q ${x(100 - edgeX)} ${y(edgeY)}, ${rightX} ${topRight.y}`,
-    `C ${x(100 - edgeX)} ${y(31)}, ${x(100 - edgeX)} ${y(70)}, ${x(100 - edgeX)} ${100 - bottomRight.y}`,
-    `Q ${x(100 - edgeX)} ${y(100 - edgeY)}, ${100 - bottomRight.x} ${bottomY}`,
-    `C ${x(70)} ${y(100 - edgeY)}, ${x(31)} ${y(100 - edgeY)}, ${bottomLeft.x} ${y(100 - edgeY)}`,
-    `Q ${x(edgeX)} ${y(100 - edgeY)}, ${leftX} ${100 - bottomLeft.y}`,
-    `C ${x(edgeX)} ${y(70)}, ${x(edgeX)} ${y(31)}, ${x(edgeX)} ${topLeft.y}`,
-    `Q ${x(edgeX)} ${y(edgeY)}, ${topLeft.x} ${topY}`,
+    `C ${x(29)} ${y(pathEdgeY)}, ${x(69)} ${y(pathEdgeY)}, ${tidy(100 - topRight.x)} ${y(pathEdgeY)}`,
+    `Q ${x(100 - pathEdgeX)} ${y(pathEdgeY)}, ${rightX} ${topRight.y}`,
+    `C ${x(100 - pathEdgeX)} ${y(31)}, ${x(100 - pathEdgeX)} ${y(70)}, ${x(100 - pathEdgeX)} ${tidy(100 - bottomRight.y)}`,
+    `Q ${x(100 - pathEdgeX)} ${y(100 - pathEdgeY)}, ${tidy(100 - bottomRight.x)} ${bottomY}`,
+    `C ${x(70)} ${y(100 - pathEdgeY)}, ${x(31)} ${y(100 - pathEdgeY)}, ${bottomLeft.x} ${y(100 - pathEdgeY)}`,
+    `Q ${x(pathEdgeX)} ${y(100 - pathEdgeY)}, ${leftX} ${tidy(100 - bottomLeft.y)}`,
+    `C ${x(pathEdgeX)} ${y(70)}, ${x(pathEdgeX)} ${y(31)}, ${x(pathEdgeX)} ${topLeft.y}`,
+    `Q ${x(pathEdgeX)} ${y(pathEdgeY)}, ${topLeft.x} ${topY}`,
     "Z",
   ].join(" ");
 
-  const radiusValues = Array.from(
-    { length: 4 },
-    () => `${Math.round(8 + random() * 10)}px`,
-  );
+  const radiusValue = (value: number) =>
+    `calc(${borderInset}px + ${value}%)`;
+  const horizontalRadii = [topLeft, topRight, bottomRight, bottomLeft]
+    .map((corner) => radiusValue(corner.x))
+    .join(" ");
+  const verticalRadii = [topLeft, topRight, bottomRight, bottomLeft]
+    .map((corner) => radiusValue(corner.y))
+    .join(" ");
   const shadowDirection = random() > 0.22 ? 1 : -1;
 
   return {
     path,
-    radius: radiusValues.join(" "),
+    radius: `${horizontalRadii} / ${verticalRadii}`,
     shadowX: shadowDirection * Math.round(3 + random() * 3),
     shadowY: Math.round(4 + random() * 3),
     strokeWidth: tidy(2.15 + random() * 0.65),
