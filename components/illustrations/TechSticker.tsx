@@ -2,7 +2,22 @@ import { HandDrawnBorder } from "@/components/ui/HandDrawnBorder";
 import { handDrawnBorderStyle } from "@/lib/create-hand-drawn-border";
 import type { Technology } from "@/types/content";
 
-import styles from "./TechSticker.module.css";
+const toneClasses = {
+  cream: "bg-cream",
+  pink: "bg-soft-pink",
+  mint: "bg-mint",
+  yellow: "bg-pastel-yellow",
+  lavender: "bg-lavender",
+  purple: "bg-purple text-white",
+  coral: "bg-coral",
+} as const;
+
+const variantClasses = {
+  1: "[rotate:-1.3deg]",
+  2: "[rotate:1deg] [animation-delay:-1.5s]",
+  3: "[rotate:-0.6deg] [animation-delay:-3s]",
+  4: "[rotate:0.8deg] [animation-delay:-4.5s]",
+} as const;
 
 function TechMark({ mark }: { mark: Technology["mark"] }) {
   if (mark === "react") {
@@ -94,13 +109,18 @@ export function TechSticker({
 
   return (
     <div
-      className={`${styles.sticker} ${styles[technology.tone]} ${styles[`variant${technology.variant}`]} ${className}`}
+      className={`relative grid min-h-[88px] w-28 animate-[sticker-float_7s_ease-in-out_infinite] place-items-center rounded-[var(--hand-radius)] border-[2.5px] border-transparent p-[9px] text-center font-black leading-none text-ink shadow-[var(--hand-shadow-x)_var(--hand-shadow-y)_0_rgb(17_17_17_/_20%)] max-md:min-h-[65px] max-md:w-[78px] max-md:p-1.5 ${toneClasses[technology.tone]} ${variantClasses[technology.variant]} ${className}`}
       style={handDrawnBorderStyle(borderSeed)}
     >
-      <span aria-hidden="true" className={styles.mark}>
+      <span
+        aria-hidden="true"
+        className="grid place-items-center [&_svg]:h-[34px] [&_svg]:w-[46px] [&_svg]:overflow-visible [&_svg]:stroke-current [&_svg]:stroke-2 [&_svg]:[stroke-linecap:round] [&_svg]:[stroke-linejoin:round] [&_text]:fill-current [&_text]:stroke-none [&_text]:font-hand [&_text]:text-xs [&_text]:font-black max-md:[&_svg]:h-[25px] max-md:[&_svg]:w-[33px]"
+      >
         <TechMark mark={technology.mark} />
       </span>
-      <span className={styles.label}>{technology.shortLabel}</span>
+      <span className="text-xs max-md:text-[0.62rem]">
+        {technology.shortLabel}
+      </span>
       <HandDrawnBorder seed={borderSeed} />
     </div>
   );
