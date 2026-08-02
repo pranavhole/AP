@@ -10,7 +10,6 @@
   --coral: #ff9da6;
   --ink: #111111;
   --muted: #5e5e5e;
-  --paper-width: 1440px;
   --header-height: 76px;
 }
 
@@ -98,10 +97,8 @@ svg {
 }
 
 .page-shell {
-  width: min(100%, var(--paper-width));
-  margin-inline: auto;
+  width: 100%;
   overflow: clip;
-  border-inline: 2px solid var(--ink);
 }
 
 .section-inner {
@@ -171,10 +168,6 @@ svg {
 @media (max-width: 767px) {
   :root {
     --header-height: 66px;
-  }
-
-  .page-shell {
-    border-inline: 0;
   }
 
   .section-inner {
