@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { NavItem } from "@/types/content";
@@ -12,7 +11,6 @@ export function MobileMenu({ links }: { links: readonly NavItem[] }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
-  const reduceMotion = useReducedMotion();
 
   const close = useCallback((restoreFocus: boolean) => {
     setOpen(false);
@@ -106,30 +104,24 @@ export function MobileMenu({ links }: { links: readonly NavItem[] }) {
         <span />
         <span />
       </button>
-      <AnimatePresence>
-        {open ? (
-          <motion.nav
-            animate={{ opacity: 1, y: 0 }}
-            aria-label="Mobile navigation"
-            className={styles.panel}
-            exit={{ opacity: 0, y: -10 }}
-            id="mobile-navigation"
-            initial={reduceMotion ? false : { opacity: 0, y: -10 }}
-            transition={{ duration: reduceMotion ? 0 : 0.18 }}
-          >
-            {links.map((link, index) => (
-              <a
-                href={link.href}
-                key={link.href}
-                onClick={() => close(false)}
-                ref={index === 0 ? firstLinkRef : undefined}
-              >
-                {link.label}
-              </a>
-            ))}
-          </motion.nav>
-        ) : null}
-      </AnimatePresence>
+      {open ? (
+        <nav
+          aria-label="Mobile navigation"
+          className={styles.panel}
+          id="mobile-navigation"
+        >
+          {links.map((link, index) => (
+            <a
+              href={link.href}
+              key={link.href}
+              onClick={() => close(false)}
+              ref={index === 0 ? firstLinkRef : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      ) : null}
     </div>
   );
 }

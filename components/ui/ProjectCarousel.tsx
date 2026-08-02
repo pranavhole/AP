@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { useReducedMotion } from "motion/react";
 import {
   Children,
   type ReactNode,
@@ -39,7 +38,6 @@ export function ProjectCarousel({ children }: ProjectCarouselProps) {
   const scrollFrameRef = useRef<number | null>(null);
   const scrollSettleRef = useRef<number | null>(null);
   const programmaticTargetRef = useRef<number | null>(null);
-  const reduceMotion = useReducedMotion();
   const boundedActive = Math.min(active, Math.max(0, slideCount - 1));
 
   const syncActiveSlide = useCallback((viewport: HTMLDivElement) => {
@@ -155,6 +153,9 @@ export function ProjectCarousel({ children }: ProjectCarouselProps) {
     }
 
     const next = Math.max(0, Math.min(slideCount - 1, index));
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     const viewport = viewportRef.current;
     const slide = viewport ? getSlideElements(viewport)[next] : undefined;
 
