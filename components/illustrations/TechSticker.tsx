@@ -109,7 +109,7 @@ export function TechSticker({
 
   return (
     <div
-      className={`relative grid min-h-[88px] w-28 animate-[sticker-float_7s_ease-in-out_infinite] place-items-center rounded-[var(--hand-radius)] border-[2.5px] border-transparent p-[9px] text-center font-black leading-none text-ink shadow-[var(--hand-shadow-x)_var(--hand-shadow-y)_0_rgb(17_17_17_/_20%)] max-md:min-h-[65px] max-md:w-[78px] max-md:p-1.5 ${toneClasses[technology.tone]} ${variantClasses[technology.variant]} ${className}`}
+      className={`grid min-h-[88px] w-28 animate-[sticker-float_7s_ease-in-out_infinite] place-items-center rounded-[var(--hand-radius)] border-[2.5px] border-transparent p-[9px] text-center font-black leading-none text-ink shadow-[var(--hand-shadow-x)_var(--hand-shadow-y)_0_rgb(17_17_17_/_20%)] max-md:min-h-[65px] max-md:w-[78px] max-md:p-1.5 ${toneClasses[technology.tone]} ${variantClasses[technology.variant]} ${className}`}
       style={handDrawnBorderStyle(borderSeed)}
     >
       <span

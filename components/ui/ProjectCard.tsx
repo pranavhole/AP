@@ -51,12 +51,12 @@ export function ProjectCard({ project }: { project: Project }) {
       <HandDrawnBorder seed={cardSeed} strength="bold" />
     </>
   );
-  const classes = `group relative block h-full rounded-[var(--hand-radius)] border-[2.5px] border-transparent bg-[#fffef9] px-3 pt-3 pb-[15px] text-ink no-underline shadow-[var(--hand-shadow-x)_var(--hand-shadow-y)_0_var(--card-shadow)] transition-[translate_180ms_ease,rotate_180ms_ease,box-shadow_180ms_ease] ${variantClasses[project.variant]}`;
+  const classes = `relative block h-full rounded-[var(--hand-radius)] border-[2.5px] border-transparent bg-[#fffef9] px-3 pt-3 pb-[15px] text-ink no-underline shadow-[var(--hand-shadow-x)_var(--hand-shadow-y)_0_var(--card-shadow)] transition-[translate_180ms_ease,rotate_180ms_ease,box-shadow_180ms_ease] ${variantClasses[project.variant]}`;
 
   return project.url ? (
     <a
       aria-label={`View ${project.title} project (opens in a new tab)`}
-      className={`${classes} hover:[rotate:0deg] hover:[translate:0_-4px] hover:shadow-[6px_7px_0_rgb(17_17_17_/_16%)] focus-visible:[rotate:0deg] focus-visible:[translate:0_-4px] focus-visible:shadow-[6px_7px_0_rgb(17_17_17_/_16%)]`}
+      className={`${classes} group hover:[rotate:0deg] hover:[translate:0_-4px] hover:shadow-[6px_7px_0_rgb(17_17_17_/_16%)] focus-visible:[rotate:0deg] focus-visible:[translate:0_-4px] focus-visible:shadow-[6px_7px_0_rgb(17_17_17_/_16%)]`}
       href={project.url}
       rel="noopener noreferrer"
       style={cardStyle}

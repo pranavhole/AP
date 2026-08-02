@@ -13,7 +13,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative min-h-[650px] border-b-[2.5px] border-ink bg-cream [background-image:url('/doodles/paper-grain.svg'),radial-gradient(rgba(17,17,17,0.08)_0.7px,transparent_0.7px)] [background-size:180px_180px,13px_13px] max-md:min-h-0"
+      className="relative min-h-[650px] border-ink bg-cream [background-image:url('/doodles/paper-grain.svg'),radial-gradient(rgba(17,17,17,0.08)_0.7px,transparent_0.7px)] [background-size:180px_180px,13px_13px] max-md:min-h-0"
       id="home"
     >
       <div
@@ -35,7 +35,7 @@ export function HeroSection() {
             <span>
               {hero.headingLines[2]}{" "}
               <span className="relative inline-block w-fit">
-                <mark className="relative z-[1] bg-[linear-gradient(transparent_35%,var(--yellow)_35%_91%,transparent_91%)] px-[0.05em] text-inherit">
+                <mark className="relative z-[1] px-[0.05em] text-inherit [background:linear-gradient(transparent_35%,var(--yellow)_35%_91%,transparent_91%)]">
                   {hero.highlightedWord}
                 </mark>
                 <ScribbleUnderline className="absolute right-[-5px] bottom-[-9px] left-0 w-[108%]" />

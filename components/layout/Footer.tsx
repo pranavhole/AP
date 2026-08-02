@@ -43,13 +43,13 @@ const socialItems = [
 
 export function Footer() {
   return (
-    <footer className="border-t-[2.5px] border-ink bg-soft-pink py-[26px] max-[520px]:py-[30px]">
+    <footer className="border-t-[2.5px] border-ink bg-soft-pink py-[26px] max-[520px]:py-[30px] mt-3">
       <div className="mx-auto grid w-[calc(100%_-_40px)] max-w-[1280px] grid-cols-[1fr_auto_1fr] items-center gap-6 max-[800px]:grid-cols-[1fr_auto] max-[520px]:grid-cols-1 max-[520px]:justify-items-center max-[520px]:text-center max-md:w-[calc(100%_-_28px)]">
         <BrandLockup />
 
         <nav
           aria-label="Footer navigation"
-          className="flex gap-[25px] font-hand font-extrabold max-[800px]:col-span-full max-[800px]:row-start-2 max-[800px]:justify-center max-[520px]:col-auto max-[520px]:row-auto max-[520px]:flex-wrap max-[520px]:gap-x-5 max-[520px]:gap-y-[13px]"
+          className="flex gap-[25px] font-hand font-extrabold max-[800px]:col-span-full max-[800px]:row-start-2 max-[800px]:justify-center max-[520px]:col-auto max-[520px]:row-auto max-[520px]:flex-wrap max-[520px]:gap-x-5 max-[520px]:gap-y-[13px] [&_a]:underline [&_a]:decoration-[0.1em] [&_a]:underline-offset-[0.18em]"
         >
           {navigation
             .filter((item) => item.label !== "Process")
