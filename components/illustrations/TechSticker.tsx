@@ -1,4 +1,7 @@
+import { HandDrawnBorder } from "@/components/ui/HandDrawnBorder";
+import { handDrawnBorderStyle } from "@/lib/create-hand-drawn-border";
 import type { Technology } from "@/types/content";
+
 import styles from "./TechSticker.module.css";
 
 function TechMark({ mark }: { mark: Technology["mark"] }) {
@@ -87,12 +90,18 @@ export function TechSticker({
   technology: Technology;
   className?: string;
 }) {
+  const borderSeed = `tech-${technology.mark}`;
+
   return (
-    <div className={`${styles.sticker} ${styles[technology.tone]} ${styles[`variant${technology.variant}`]} ${className}`}>
+    <div
+      className={`${styles.sticker} ${styles[technology.tone]} ${styles[`variant${technology.variant}`]} ${className}`}
+      style={handDrawnBorderStyle(borderSeed)}
+    >
       <span aria-hidden="true" className={styles.mark}>
         <TechMark mark={technology.mark} />
       </span>
       <span className={styles.label}>{technology.shortLabel}</span>
+      <HandDrawnBorder seed={borderSeed} />
     </div>
   );
 }

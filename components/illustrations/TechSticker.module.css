@@ -1,12 +1,14 @@
 .sticker {
+  position: relative;
   display: grid;
   width: 112px;
   min-height: 88px;
   place-items: center;
-  border: 2.5px solid var(--ink);
+  border: 2.5px solid transparent;
+  border-radius: var(--hand-radius);
   padding: 9px;
   color: var(--ink);
-  box-shadow: 4px 5px 0 rgb(17 17 17 / 20%);
+  box-shadow: var(--hand-shadow-x) var(--hand-shadow-y) 0 rgb(17 17 17 / 20%);
   font-weight: 900;
   line-height: 1;
   text-align: center;
@@ -70,24 +72,20 @@
 }
 
 .variant1 {
-  border-radius: 11px 16px 9px 13px;
   rotate: -1.3deg;
 }
 
 .variant2 {
-  border-radius: 18px 10px 15px 8px;
   rotate: 1deg;
   animation-delay: -1.5s;
 }
 
 .variant3 {
-  border-radius: 9px 14px 18px 11px;
   rotate: -0.6deg;
   animation-delay: -3s;
 }
 
 .variant4 {
-  border-radius: 15px 8px 11px 17px;
   rotate: 0.8deg;
   animation-delay: -4.5s;
 }
