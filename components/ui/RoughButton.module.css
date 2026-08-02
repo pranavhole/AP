@@ -1,11 +1,12 @@
 .button {
+  position: relative;
   display: inline-flex;
   min-height: 48px;
   align-items: center;
   justify-content: center;
   gap: 9px;
-  border: 2.5px solid var(--ink);
-  border-radius: 9px 12px 8px 11px;
+  border: 2.5px solid transparent;
+  border-radius: var(--hand-radius);
   padding: 11px 20px;
   color: var(--ink);
   font-weight: 900;
@@ -28,17 +29,17 @@
 
 .coral {
   background: var(--coral);
-  box-shadow: 4px 5px 0 var(--purple);
+  box-shadow: var(--hand-shadow-x) var(--hand-shadow-y) 0 var(--purple);
 }
 
 .paper {
   background: #fffef9;
-  box-shadow: 4px 4px 0 var(--yellow);
+  box-shadow: var(--hand-shadow-x) var(--hand-shadow-y) 0 var(--yellow);
 }
 
 .yellow {
   background: var(--yellow);
-  box-shadow: 4px 5px 0 var(--ink);
+  box-shadow: var(--hand-shadow-x) var(--hand-shadow-y) 0 var(--ink);
 }
 
 @media (max-width: 430px) {

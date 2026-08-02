@@ -24,7 +24,10 @@ export function CTASection() {
         <HandDrawnArrow className={styles.arrow} />
 
         <div className={styles.action}>
-          <RoughButton href={contactLinks.scheduleCall}>
+          <RoughButton
+            borderSeed="button-schedule-call"
+            href={contactLinks.scheduleCall}
+          >
             Schedule a Call
             <CalendarDays aria-hidden="true" size={19} />
           </RoughButton>

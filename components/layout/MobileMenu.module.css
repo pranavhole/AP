@@ -3,15 +3,16 @@
 }
 
 .trigger {
+  position: relative;
   display: grid;
   width: 46px;
   height: 44px;
   place-content: center;
   gap: 5px;
-  border: 2px solid var(--ink);
-  border-radius: 9px 12px 8px 10px;
+  border: 2px solid transparent;
+  border-radius: var(--hand-radius);
   background: var(--cream);
-  box-shadow: 3px 3px 0 var(--purple);
+  box-shadow: var(--hand-shadow-x) var(--hand-shadow-y) 0 var(--purple);
   cursor: pointer;
 }
 
@@ -52,7 +53,8 @@
   left: 0;
   display: grid;
   gap: 4px;
-  border-bottom: 2.5px solid var(--ink);
+  border: 2.5px solid transparent;
+  border-radius: var(--hand-radius);
   background: var(--pink);
   padding: 14px 18px 20px;
   animation: panel-in 180ms cubic-bezier(0.22, 1, 0.36, 1) both;

@@ -1,10 +1,12 @@
 import { ArrowRight } from "lucide-react";
 
 import { HeroArtwork } from "@/components/illustrations/HeroArtwork";
+import { HandDrawnBorder } from "@/components/ui/HandDrawnBorder";
 import { RoughButton } from "@/components/ui/RoughButton";
 import { ScribbleUnderline } from "@/components/ui/ScribbleUnderline";
 import { contactLinks } from "@/config/site";
 import { pageContent } from "@/data/page-content";
+import { handDrawnBorderStyle } from "@/lib/create-hand-drawn-border";
 
 import styles from "./HeroSection.module.css";
 
@@ -16,7 +18,13 @@ export function HeroSection() {
       <div aria-hidden="true" className={styles.mintEdge} />
       <div className={`${styles.inner} section-inner`}>
         <div className={styles.copy}>
-          <p className={styles.eyebrow}>{hero.eyebrow}</p>
+          <p
+            className={styles.eyebrow}
+            style={handDrawnBorderStyle("hero-eyebrow", "subtle")}
+          >
+            {hero.eyebrow}
+            <HandDrawnBorder seed="hero-eyebrow" strength="subtle" />
+          </p>
           <h1>
             <span>{hero.headingLines[0]}</span>
             <span>{hero.headingLines[1]}</span>
@@ -30,10 +38,17 @@ export function HeroSection() {
           </h1>
           <p className={styles.support}>{hero.support}</p>
           <div className={styles.actions}>
-            <RoughButton href={contactLinks.startProject}>
+            <RoughButton
+              borderSeed="button-start-project"
+              href={contactLinks.startProject}
+            >
               Start Your Project <ArrowRight aria-hidden="true" size={20} />
             </RoughButton>
-            <RoughButton href="#work" variant="paper">
+            <RoughButton
+              borderSeed="button-view-work"
+              href="#work"
+              variant="paper"
+            >
               View My Work
             </RoughButton>
           </div>

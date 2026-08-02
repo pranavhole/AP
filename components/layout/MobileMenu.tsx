@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { HandDrawnBorder } from "@/components/ui/HandDrawnBorder";
+import { handDrawnBorderStyle } from "@/lib/create-hand-drawn-border";
 import type { NavItem } from "@/types/content";
 
 import styles from "./MobileMenu.module.css";
@@ -98,17 +100,20 @@ export function MobileMenu({ links }: { links: readonly NavItem[] }) {
         className={styles.trigger}
         onClick={() => setOpen((value) => !value)}
         ref={triggerRef}
+        style={handDrawnBorderStyle("mobile-menu-trigger", "subtle")}
         type="button"
       >
         <span />
         <span />
         <span />
+        <HandDrawnBorder seed="mobile-menu-trigger" strength="subtle" />
       </button>
       {open ? (
         <nav
           aria-label="Mobile navigation"
           className={styles.panel}
           id="mobile-navigation"
+          style={handDrawnBorderStyle("mobile-menu-panel", "subtle")}
         >
           {links.map((link, index) => (
             <a
@@ -120,6 +125,7 @@ export function MobileMenu({ links }: { links: readonly NavItem[] }) {
               {link.label}
             </a>
           ))}
+          <HandDrawnBorder seed="mobile-menu-panel" strength="subtle" />
         </nav>
       ) : null}
     </div>

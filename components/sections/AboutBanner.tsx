@@ -27,6 +27,7 @@ export function AboutBanner() {
         </div>
 
         <RoughButton
+          borderSeed="button-build-together"
           className={styles.cta}
           href={contactLinks.buildTogether}
           variant="yellow"

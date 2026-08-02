@@ -32,13 +32,15 @@
 }
 
 .eyebrow {
+  position: relative;
   width: fit-content;
   margin: 0 0 28px;
-  border: 2px solid var(--ink);
-  border-radius: 7px 10px 6px 9px;
+  border: 2px solid transparent;
+  border-radius: var(--hand-radius);
   background: var(--lavender);
   padding: 7px 14px 5px;
-  box-shadow: 3px 4px 0 rgb(118 83 216 / 55%);
+  box-shadow: var(--hand-shadow-x) var(--hand-shadow-y) 0
+    rgb(118 83 216 / 55%);
   font-family: var(--font-heading), cursive;
   font-size: clamp(0.95rem, 1.4vw, 1.25rem);
   font-weight: 800;

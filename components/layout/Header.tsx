@@ -26,7 +26,11 @@ export function Header() {
           ))}
         </nav>
         <div className={styles.cta}>
-          <RoughButton href={contactLinks.talk} variant="paper">
+          <RoughButton
+            borderSeed="button-lets-talk"
+            href={contactLinks.talk}
+            variant="paper"
+          >
             LET&apos;S TALK
             <MessageCircle aria-hidden="true" size={17} strokeWidth={2.5} />
           </RoughButton>
