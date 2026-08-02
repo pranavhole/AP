@@ -277,8 +277,8 @@ export function AboutBanner() {
         <Sparkle className="absolute top-9 right-16 z-[4] w-9 rotate-[7deg] text-ink max-md:right-5 max-md:w-7" />
         <Sparkle className="absolute top-[22%] left-[31%] z-[4] w-6 -rotate-[13deg] text-purple max-lg:hidden" />
 
-        <div className="relative z-[2] grid grid-cols-[minmax(300px,390px)_1fr] gap-12 max-xl:grid-cols-[minmax(260px,330px)_1fr] max-xl:gap-8 max-lg:grid-cols-1 max-lg:gap-3">
-          <div className="relative row-span-2 min-h-[520px] self-end max-xl:min-h-[470px] max-lg:row-auto max-lg:mx-auto max-lg:min-h-[430px] max-lg:w-full max-lg:max-w-[500px] max-md:min-h-[350px]">
+        <div className="relative z-[2] grid grid-cols-[minmax(260px,0.88fr)_minmax(300px,1fr)_minmax(430px,1.25fr)] items-start gap-x-8 gap-y-8 max-xl:grid-cols-[minmax(235px,0.82fr)_minmax(270px,0.95fr)_minmax(370px,1.2fr)] max-xl:gap-x-6 max-lg:grid-cols-1 max-lg:gap-3">
+          <div className="relative row-span-2 min-h-[500px] self-stretch max-xl:min-h-[455px] max-lg:row-auto max-lg:mx-auto max-lg:min-h-[430px] max-lg:w-full max-lg:max-w-[500px] max-md:min-h-[350px]">
             <div className="absolute right-[4%] bottom-[4%] left-[2%] h-[76%] rounded-[47%_53%_42%_58%/56%_44%_58%_42%] bg-pastel-yellow [rotate:-3deg]" />
             <Image
               alt="Illustrated Pranav Hole standing confidently with crossed arms in a purple hoodie"
@@ -293,9 +293,9 @@ export function AboutBanner() {
             </svg>
           </div>
 
-          <div className="pt-5 max-lg:pt-0">
+          <div className="pt-9 max-xl:pt-7 max-lg:pt-0">
             <div className="relative mb-8 w-fit max-md:mb-6">
-              <h2 className="font-hand text-[clamp(3.6rem,6vw,6.5rem)] leading-[0.88] tracking-[-0.02em]">About Me</h2>
+              <h2 className="font-hand text-[clamp(3.6rem,4.6vw,5rem)] leading-[0.88] tracking-[-0.02em]">About Me</h2>
               <svg aria-hidden="true" className="absolute -bottom-5 left-0 h-6 w-full overflow-visible text-purple" preserveAspectRatio="none" viewBox="0 0 320 24">
                 <path d="M6 12c72 5 153-5 307 1M18 17c68 3 173-4 278 0" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="4" />
               </svg>
@@ -305,14 +305,14 @@ export function AboutBanner() {
               Hi, I&apos;m Pranav Hole
               <Hand aria-hidden="true" className="h-8 w-8 rotate-[12deg] fill-pastel-yellow text-ink" strokeWidth={2.2} />
             </p>
-            <p className="max-w-[760px] text-[clamp(1.1rem,1.6vw,1.35rem)] leading-[1.65] font-bold">
+            <p className="max-w-[540px] text-[clamp(1.05rem,1.35vw,1.25rem)] leading-[1.65] font-bold">
               Full Stack Developer passionate about building scalable digital products, AI applications and useful software experiences.
               <span className="mt-2 block">I transform ideas into products that users actually love.</span>
             </p>
           </div>
 
           <div
-            className="relative isolate mt-2 rotate-[0.15deg] bg-transparent px-10 pt-14 pb-7 max-md:rotate-[0.1deg] max-md:px-5 max-md:pt-12 max-md:pb-5"
+            className="relative isolate mt-2 min-h-[330px] rotate-[0.15deg] bg-transparent px-9 pt-14 pb-7 max-xl:px-7 max-md:min-h-0 max-md:rotate-[0.1deg] max-md:px-5 max-md:pt-12 max-md:pb-5"
           >
             <ValuesPaperShape />
             <div className="absolute -top-5 left-[53%] -translate-x-1/2 max-md:left-[48%]">
@@ -330,47 +330,48 @@ export function AboutBanner() {
               ))}
             </ul>
           </div>
+
+          <div className="col-[2/4] grid grid-cols-4 gap-5 max-lg:col-auto max-lg:mt-7 max-lg:grid-cols-2 max-md:gap-4">
+            <article
+              className="relative isolate min-h-[180px] -rotate-[0.35deg] bg-transparent p-5 text-center transition-[translate,rotate] duration-200 hover:-translate-y-1 hover:-rotate-[0.8deg] max-md:min-h-[170px] max-md:p-4"
+            >
+              <YellowStatsPaper />
+              <BriefcaseBusiness aria-hidden="true" className="relative z-[1] mx-auto mb-2 h-9 w-9 -rotate-3" strokeWidth={2.4} />
+              <strong className="relative z-[1] block font-hand text-[2.8rem] leading-none max-md:text-4xl">3+</strong>
+              <span className="relative z-[1] mt-2 block font-hand text-lg leading-tight">Years Experience</span>
+            </article>
+
+            <article
+              className="relative isolate min-h-[184px] rotate-[0.25deg] bg-transparent px-4 py-5 text-center transition-[translate,rotate] duration-200 hover:-translate-y-1 hover:rotate-[0.65deg] max-md:min-h-[178px] max-md:p-4"
+            >
+              <GreenStatsPaper />
+              <Code2 aria-hidden="true" className="relative z-[1] mx-auto mb-1 h-10 w-10 rotate-2" strokeWidth={2.5} />
+              <strong className="relative z-[1] block font-hand text-[3rem] leading-none max-md:text-4xl">20+</strong>
+              <span className="relative z-[1] mt-2 block font-hand text-lg leading-tight">Projects Completed</span>
+            </article>
+
+            <article
+              className="relative isolate min-h-[178px] rotate-[0.3deg] bg-transparent p-5 text-center transition-[translate,rotate] duration-200 hover:-translate-y-1 hover:rotate-[0.6deg] max-md:min-h-[174px] max-md:p-4"
+            >
+              <PinkStatsPaper />
+              <Users aria-hidden="true" className="relative z-[1] mx-auto mb-2 h-9 w-9 -rotate-1" strokeWidth={2.35} />
+              <strong className="relative z-[1] block font-hand text-[2.85rem] leading-none max-md:text-4xl">10+</strong>
+              <span className="relative z-[1] mt-2 block font-hand text-lg leading-tight">Happy Clients</span>
+            </article>
+
+            <article
+              className="relative isolate min-h-[176px] -rotate-[0.2deg] bg-transparent px-5 py-5 text-center transition-[translate,rotate] duration-200 hover:-translate-y-1 hover:-rotate-[0.55deg] max-md:min-h-[168px] max-md:p-4"
+            >
+              <PurpleStatsPaper />
+              <Coffee aria-hidden="true" className="relative z-[1] mx-auto mb-1 h-9 w-9 rotate-3" strokeWidth={2.5} />
+              <strong className="relative z-[1] block font-hand text-[3.1rem] leading-none max-md:text-4xl">∞</strong>
+              <span className="relative z-[1] mt-2 block font-hand text-lg leading-tight">Cups of Coffee</span>
+            </article>
+          </div>
+
         </div>
 
-        <div className="relative z-[2] mt-10 grid grid-cols-4 gap-6 max-lg:mt-7 max-lg:grid-cols-2 max-md:gap-4">
-          <article
-            className="relative isolate -rotate-[0.35deg] bg-transparent p-6 text-center transition-[translate,rotate] duration-200 hover:-translate-y-1 hover:-rotate-[0.8deg] max-md:min-h-[170px] max-md:p-4"
-          >
-            <YellowStatsPaper />
-            <BriefcaseBusiness aria-hidden="true" className="relative z-[1] mx-auto mb-2 h-10 w-10 -rotate-3" strokeWidth={2.4} />
-            <strong className="relative z-[1] block font-hand text-5xl leading-none max-md:text-4xl">3+</strong>
-            <span className="relative z-[1] mt-2 block font-hand text-lg leading-tight">Years Experience</span>
-          </article>
-
-          <article
-            className="relative isolate rotate-[0.25deg] bg-transparent px-5 py-7 text-center transition-[translate,rotate] duration-200 hover:-translate-y-1 hover:rotate-[0.65deg] max-md:min-h-[178px] max-md:p-4"
-          >
-            <GreenStatsPaper />
-            <Code2 aria-hidden="true" className="relative z-[1] mx-auto mb-1 h-11 w-11 rotate-2" strokeWidth={2.5} />
-            <strong className="relative z-[1] block font-hand text-[3.35rem] leading-none max-md:text-4xl">20+</strong>
-            <span className="relative z-[1] mt-2 block font-hand text-lg leading-tight">Projects Completed</span>
-          </article>
-
-          <article
-            className="relative isolate rotate-[0.3deg] bg-transparent p-[26px] text-center transition-[translate,rotate] duration-200 hover:-translate-y-1 hover:rotate-[0.6deg] max-md:min-h-[174px] max-md:p-4"
-          >
-            <PinkStatsPaper />
-            <Users aria-hidden="true" className="relative z-[1] mx-auto mb-2 h-10 w-10 -rotate-1" strokeWidth={2.35} />
-            <strong className="relative z-[1] block font-hand text-[3.15rem] leading-none max-md:text-4xl">10+</strong>
-            <span className="relative z-[1] mt-2 block font-hand text-lg leading-tight">Happy Clients</span>
-          </article>
-
-          <article
-            className="relative isolate -rotate-[0.2deg] bg-transparent px-7 py-6 text-center transition-[translate,rotate] duration-200 hover:-translate-y-1 hover:-rotate-[0.55deg] max-md:min-h-[168px] max-md:p-4"
-          >
-            <PurpleStatsPaper />
-            <Coffee aria-hidden="true" className="relative z-[1] mx-auto mb-1 h-10 w-10 rotate-3" strokeWidth={2.5} />
-            <strong className="relative z-[1] block font-hand text-[3.5rem] leading-none max-md:text-4xl">∞</strong>
-            <span className="relative z-[1] mt-2 block font-hand text-lg leading-tight">Cups of Coffee</span>
-          </article>
-        </div>
-
-        <div className="relative z-[2] mt-11 grid grid-cols-[1.08fr_1fr] items-stretch gap-10 max-lg:grid-cols-1 max-lg:gap-11">
+        <div className="relative z-[2] mt-10 grid grid-cols-[1.08fr_1fr] items-stretch gap-10 max-lg:grid-cols-1 max-lg:gap-11">
           <article
             className="relative isolate rotate-[0.1deg] bg-transparent px-8 pt-12 pb-7 max-md:rotate-[0.08deg] max-md:px-5 max-md:pt-11"
           >
