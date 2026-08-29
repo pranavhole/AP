@@ -47,7 +47,7 @@ export function HeroSection() {
 
           {/* Main Heading */}
           <h1 className="m-0 font-hand text-[clamp(3.2rem,5.5vw,5.5rem)] leading-[0.94] tracking-[0.01em] text-[#17172A]">
-            <span className="block">I build digital</span>
+            <span className="block">We build digital</span>
             <span className="block">products that</span>
             <span className="block">
               <span className="relative inline-block px-1">
@@ -100,7 +100,7 @@ export function HeroSection() {
               size="lg"
               variant="white"
             >
-              View My Work
+              View Our Work
             </ComicButton>
           </div>
         </div>

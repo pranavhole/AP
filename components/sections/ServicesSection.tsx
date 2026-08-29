@@ -45,7 +45,7 @@ export function ServicesSection() {
         {/* Section Heading */}
         <SectionHeading
           subtitle="Modern web architecture, scalable systems & smart automation tailored to your business."
-          title="What I Can Help You With"
+          title="What We Can Help You With"
           tone="yellow"
         />
 

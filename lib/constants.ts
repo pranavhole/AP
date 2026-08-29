@@ -5,12 +5,12 @@ export const SITE_INFO = {
   initials: "DT",
   address:
     "SHOP NO. 58 ARIHANT NAGAR, HATHOJ KALWAR ROAD, Hathoj, Jaipur, Jaipur- 302012, Rajasthan",
-  headline: "I build digital products that work.",
+  headline: "We build digital products that work.",
   subtext: "Websites, Web Apps & AI-Powered Solutions for Modern Businesses.",
   tagline: "IDEA → DESIGN → DEVELOP → GROW",
-  aboutHeading: "About Dialex",
+  aboutHeading: "About Dialex Technologies",
   aboutCopy:
-    "Dialex Technologies is focused on building clean, scalable and useful digital products. We work across modern web development, backend systems, cloud infrastructure and AI-powered applications.",
+    "Dialex Technologies Private Limited is a full-stack digital solutions company focused on building clean, scalable and high-performance digital products. We work across modern web development, backend systems, cloud infrastructure and smart AI solutions.",
   aboutSkills: ["Full-Stack", "AI Engineering", "Cloud & Backend"],
   ctaHeading: "Have a project in mind?",
   ctaSubtext: "Let's build something awesome together.",
@@ -182,7 +182,7 @@ export const TESTIMONIALS = [
   {
     id: 1,
     quote:
-      "Pranav delivered an amazing website that exceeded our expectations.",
+      "Dialex Technologies delivered an amazing website that exceeded our expectations.",
     name: "John Doe",
     role: "Founder, StartupX",
     avatarColor: "#F9E37D",
@@ -190,7 +190,7 @@ export const TESTIMONIALS = [
   {
     id: 2,
     quote:
-      "Working with Pranav was smooth from day one. He built our complete SaaS MVP in record time with immaculate attention to detail.",
+      "Working with Dialex Technologies was smooth from day one. They built our complete SaaS MVP in record time with immaculate attention to detail.",
     name: "Sarah Jenkins",
     role: "Co-Founder, SaaSify",
     avatarColor: "#DCC8F6",
@@ -198,7 +198,7 @@ export const TESTIMONIALS = [
   {
     id: 3,
     quote:
-      "The AI automation features Pranav integrated doubled our team's operational efficiency. He is a truly talented full-stack consultant.",
+      "The AI automation features Dialex Technologies integrated doubled our team's operational efficiency. A truly talented engineering partner.",
     name: "Alex Rivera",
     role: "Head of Product, Apex AI",
     avatarColor: "#CFEBD8",

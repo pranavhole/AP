@@ -49,11 +49,11 @@ test("hero, services, projects, process, testimonial, and CTA use exact copy", a
 
   const requiredCopy = [
     "IDEA → DESIGN → DEVELOP → GROW",
-    "I build digital",
+    "We build digital",
     "products that",
     "work.",
     "Websites, Web Apps & AI-Powered Solutions for Modern Businesses.",
-    "What I Can Help You With",
+    "What We Can Help You With",
     "Web Development",
     "Fast, responsive and modern websites that represent your brand.",
     "E-Commerce",
@@ -66,14 +66,14 @@ test("hero, services, projects, process, testimonial, and CTA use exact copy", a
     "Business Landing Page",
     "E-Commerce Store",
     "AI Dashboard",
-    "My Process",
+    "Our Process",
     "Discover",
     "Design",
     "Develop",
     "Launch",
     "Grow",
     "What Clients Say",
-    "Pranav delivered an amazing website that exceeded our expectations.",
+    "Dialex Technologies delivered an amazing website that exceeded our expectations.",
     "John Doe",
     "Founder, StartupX",
     "Have a project in mind?",
@@ -108,14 +108,15 @@ test("metadata matches the consultancy SEO brief", async () => {
   const layout = await read("app/layout.tsx");
 
   assert.ok(
-    layout.includes("Pranav Hole | Freelance Full-Stack Developer & AI Consultant"),
+    layout.includes("Dialex Technologies | Full-Stack Development & AI Solutions Company"),
   );
   assert.ok(
     layout.includes(
-      "Freelance Full-Stack Developer helping businesses build modern websites, scalable web applications, AI-powered solutions and cloud systems.",
+      "Dialex Technologies Private Limited helps businesses build modern websites, scalable web applications, AI-powered solutions and cloud systems.",
     ),
   );
   for (const keyword of [
+    "Dialex Technologies",
     "Full Stack Developer",
     "AI Engineer",
     "Next.js Developer",

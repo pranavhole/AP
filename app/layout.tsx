@@ -10,12 +10,14 @@ const headingFont = Patrick_Hand({
   subsets: ["latin"],
   variable: "--font-heading",
   weight: "400",
+  fallback: ["Caveat", "Comic Sans MS", "cursive", "sans-serif"],
 });
 
 const bodyFont = Nunito_Sans({
   display: "swap",
   subsets: ["latin"],
   variable: "--font-body",
+  fallback: ["Segoe UI", "system-ui", "sans-serif"],
 });
 
 const vercelHost =
@@ -23,16 +25,17 @@ const vercelHost =
 const deploymentSiteUrl =
   siteConfig.siteUrl ?? (vercelHost ? `https://${vercelHost}` : null);
 const metadataBase = new URL(deploymentSiteUrl ?? "http://localhost:3000");
-const title = "Pranav Hole | Freelance Full-Stack Developer & AI Consultant";
+const title = "Dialex Technologies | Full-Stack Development & AI Solutions Company";
 const description =
-  "Freelance Full-Stack Developer helping businesses build modern websites, scalable web applications, AI-powered solutions and cloud systems.";
+  "Dialex Technologies Private Limited helps businesses build modern websites, scalable web applications, AI-powered solutions and cloud systems.";
 
 export const metadata: Metadata = {
-  title: { default: title, template: "%s | Pranav Hole" },
+  title: { default: title, template: "%s | Dialex Technologies" },
   description,
   keywords: [
+    "Dialex Technologies",
     "Full Stack Developer",
-    "Freelance Developer",
+    "Software Development Company",
     "AI Engineer",
     "Next.js Developer",
     "React Developer",

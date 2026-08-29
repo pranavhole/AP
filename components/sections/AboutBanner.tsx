@@ -39,7 +39,7 @@ export function AboutBanner() {
             {/* Heading */}
             <div className="relative mb-6">
               <h2 className="font-hand text-[clamp(2.8rem,4.5vw,4.2rem)] leading-none text-[#17172A]">
-                About Me
+                {SITE_INFO.aboutHeading}
               </h2>
               {/* Yellow Underline */}
               <svg
@@ -60,11 +60,11 @@ export function AboutBanner() {
 
             {/* Main Copy */}
             <p className="font-hand text-[clamp(1.25rem,1.8vw,1.6rem)] font-bold text-[#17172A] leading-relaxed mb-4">
-              I&apos;m a Full-Stack Developer focused on building clean, scalable and useful digital products.
+              We&apos;re a digital engineering company focused on building clean, scalable and useful digital products.
             </p>
 
             <p className="text-[1.05rem] font-bold text-muted leading-relaxed mb-6">
-              I work across modern web development, backend systems, cloud infrastructure and AI-powered applications. Whether taking a product from zero to one or supercharging an existing codebase, I focus on velocity, maintainability, and real business outcomes.
+              We work across modern web development, backend systems, cloud infrastructure and AI-powered applications. Whether taking a product from zero to one or supercharging an existing codebase, we focus on velocity, maintainability, and real business outcomes.
             </p>
 
             {/* 3 Skill Chips */}

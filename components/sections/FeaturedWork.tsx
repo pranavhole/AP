@@ -52,7 +52,7 @@ export function FeaturedWork() {
       <div className="mx-auto max-w-[1280px]">
         {/* Section Heading */}
         <SectionHeading
-          subtitle="A selection of high-impact web apps, modern websites and AI systems I've built."
+          subtitle="A selection of high-impact web apps, modern websites and AI systems we've built."
           title="Selected Work"
           tone="purple"
         />

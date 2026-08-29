@@ -75,7 +75,7 @@ export function CTASection() {
               size="lg"
               variant="white"
             >
-              View My Work
+              View Our Work
             </ComicButton>
           </div>
         </div>
