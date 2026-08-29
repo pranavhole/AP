@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "Pranav Hole — your tech partner for web, mobile, AI, and cloud products";
+  "Dialex Technologies — your tech partner for web, mobile, AI, and cloud products";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -48,7 +48,7 @@ export default function OpenGraphImage() {
             width: 220,
           }}
         >
-          PH
+          DT
         </div>
         <div
           style={{
@@ -59,8 +59,8 @@ export default function OpenGraphImage() {
             minWidth: 0,
           }}
         >
-          <div style={{ fontSize: 72, fontWeight: 900 }}>Pranav Hole</div>
-          <div style={{ fontSize: 44, fontWeight: 800, lineHeight: 1.08 }}>
+          <div style={{ fontSize: 64, fontWeight: 900 }}>Dialex Technologies</div>
+          <div style={{ fontSize: 40, fontWeight: 800, lineHeight: 1.08 }}>
             Your Tech Partner to Build Digital Products That Work
           </div>
           <div style={{ fontSize: 27 }}>Web • Mobile • AI • Cloud</div>

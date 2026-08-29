@@ -1,110 +1,174 @@
-import { Mail } from "lucide-react";
-
-import { siteConfig } from "@/config/site";
-import { navigation } from "@/data/navigation";
-import { pageContent } from "@/data/page-content";
-
-import { BrandLockup } from "./BrandLockup";
-
-function GitHubMark() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 16 16">
-      <path
-        d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.49c-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.7 7.7 0 0 1 8 3.86c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function LinkedInMark() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24">
-      <path
-        d="M5.34 7.43a2.06 2.06 0 1 0 0-4.12 2.06 2.06 0 0 0 0 4.12ZM6.12 20.45H2.56V9h3.56v11.45ZM20.45 14.17c0-3.09-.67-5.46-4.27-5.46-1.73 0-2.89.95-3.37 1.85h-.05V9H9.35v11.45h3.56v-5.67c0-1.49.28-2.94 2.14-2.94 1.82 0 1.85 1.71 1.85 3.04v5.57h3.55v-6.28Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-const socialItems = [
-  { label: "LinkedIn", href: siteConfig.socials.linkedin, icon: LinkedInMark },
-  { label: "GitHub", href: siteConfig.socials.github, icon: GitHubMark },
-  { label: "X", href: siteConfig.socials.x, icon: null },
-  {
-    label: "Email",
-    href: siteConfig.contact.email
-      ? `mailto:${siteConfig.contact.email}`
-      : null,
-    icon: Mail,
-  },
-] as const;
+import React from "react";
+import { MapPin, Mail } from "lucide-react";
+import { LinkedinIcon, GithubIcon, MailIcon } from "@/components/svg/Icons";
+import { SketchIconButton } from "@/components/ui/SketchIconButton";
+import { SITE_INFO, NAV_LINKS } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="border-t-[2.5px] border-ink bg-soft-pink py-[26px] max-[520px]:py-[30px] mt-3">
-      <div className="mx-auto grid w-[calc(100%_-_40px)] max-w-[1280px] grid-cols-[1fr_auto_1fr] items-center gap-6 max-[800px]:grid-cols-[1fr_auto] max-[520px]:grid-cols-1 max-[520px]:justify-items-center max-[520px]:text-center max-md:w-[calc(100%_-_28px)]">
-        <BrandLockup />
-
-        <nav
-          aria-label="Footer navigation"
-          className="flex gap-[25px] font-hand font-extrabold max-[800px]:col-span-full max-[800px]:row-start-2 max-[800px]:justify-center max-[520px]:col-auto max-[520px]:row-auto max-[520px]:flex-wrap max-[520px]:gap-x-5 max-[520px]:gap-y-[13px] [&_a]:underline [&_a]:decoration-[0.1em] [&_a]:underline-offset-[0.18em]"
-        >
-          {navigation
-            .filter((item) => item.label !== "Process")
-            .map((item) => (
-              <a href={item.href} key={item.href}>
-                {item.label}
-              </a>
-            ))}
-        </nav>
-
-        <nav
-          aria-label="Social links"
-          className="flex justify-end gap-0.5 max-[520px]:justify-center"
-        >
-          {socialItems.map(({ label, href, icon: Icon }) => {
-            const content = Icon ? (
-              <Icon />
-            ) : (
-              <b aria-hidden="true">X</b>
-            );
-
-            if (!href) {
-              return (
-                <span
-                  aria-disabled="true"
-                  aria-label={`${label} unavailable`}
-                  className="grid min-h-11 w-11 place-items-center rounded-full opacity-[0.62] [&_svg]:h-5 [&_svg]:w-5"
-                  key={label}
-                  role="link"
+    <footer
+      className="relative bg-[#F6B8B8] pt-14 pb-12 px-4 border-t-2 border-[#17172A] overflow-hidden"
+      style={{
+        backgroundImage: "radial-gradient(rgba(23, 23, 42, 0.05) 0.8px, transparent 0.8px)",
+        backgroundSize: "16px 16px",
+      }}
+    >
+      <div className="mx-auto max-w-[1280px]">
+        <div className="grid grid-cols-1 md:grid-cols-[1.3fr_0.9fr_1fr] gap-10 md:gap-8 items-start mb-12">
+          {/* Left Column: Brand & Company Details */}
+          <div className="flex flex-col items-start max-md:items-center max-md:text-center">
+            <a
+              className="group inline-flex items-center gap-3 no-underline text-[#17172A] mb-4 transition-transform hover:-translate-y-0.5"
+              href="#home"
+            >
+              {/* Hand-drawn DT monogram badge */}
+              <span className="relative isolate grid h-12 w-12 flex-none place-items-center -rotate-2">
+                <svg
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 -z-10 h-full w-full overflow-visible"
+                  viewBox="0 0 100 100"
                 >
-                  {content}
+                  <path
+                    d="M 6,6 C 30,2 72,4 94,3 C 97,24 95,76 96,94 C 72,97 26,95 4,96 C 2,74 4,24 6,6 Z"
+                    fill="#7653D8"
+                    transform="translate(2.5, 3.5)"
+                  />
+                  <path
+                    d="M 6,6 C 30,2 72,4 94,3 C 97,24 95,76 96,94 C 72,97 26,95 4,96 C 2,74 4,24 6,6 Z"
+                    fill="#FFF0B0"
+                    stroke="#17172A"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.4"
+                    vectorEffect="non-scaling-stroke"
+                  />
+                </svg>
+                <strong className="font-hand text-2xl font-black text-[#17172A]">
+                  {SITE_INFO.initials}
+                </strong>
+              </span>
+
+              <div className="text-left">
+                <strong className="block font-hand text-xl font-black leading-tight tracking-wide text-[#17172A]">
+                  {SITE_INFO.name.toUpperCase()}
+                </strong>
+                <span className="text-xs font-bold text-muted">
+                  {SITE_INFO.companyName}
                 </span>
-              );
-            }
+              </div>
+            </a>
 
-            const external = /^https?:\/\//i.test(href);
+            {/* Mailing Address */}
+            <div className="mt-2 text-left max-md:text-center max-w-[380px] space-y-2 bg-[#FFF8E8]/70 border-2 border-[#17172A] rounded-xl p-3.5 shadow-[2px_2px_0_#17172A]">
+              <div className="flex items-start gap-2">
+                <MapPin className="text-[#17172A] flex-none mt-0.5" size={16} strokeWidth={2.4} />
+                <p className="text-xs font-bold text-[#17172A] leading-relaxed m-0">
+                  <span className="font-black block text-[0.8rem] mb-0.5">Registered Office & Mailing Address:</span>
+                  {SITE_INFO.address}
+                </p>
+              </div>
 
-            return (
-              <a
-                aria-label={label}
-                className="grid min-h-11 w-11 place-items-center rounded-full transition-[background-color_160ms_ease,translate_160ms_ease] hover:-translate-y-0.5 hover:bg-white/40 focus-visible:-translate-y-0.5 focus-visible:bg-white/40 [&_svg]:h-5 [&_svg]:w-5"
-                href={href}
-                key={label}
-                rel={external ? "noopener noreferrer" : undefined}
-                target={external ? "_blank" : undefined}
+              <div className="flex items-center gap-2 pt-1 border-t border-dashed border-[#17172A]/30">
+                <Mail className="text-[#17172A] flex-none" size={15} strokeWidth={2.4} />
+                <a
+                  className="text-xs font-extrabold text-[#17172A] hover:underline"
+                  href={`mailto:${SITE_INFO.email}`}
+                >
+                  {SITE_INFO.email}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Middle Column: Quick Links */}
+          <div className="flex flex-col items-start md:items-center max-md:items-center max-md:text-center">
+            <div>
+              <h4 className="font-hand text-xl font-black text-[#17172A] mb-4 pb-1 border-b-2 border-dashed border-[#17172A]/30">
+                Quick Links
+              </h4>
+              <nav aria-label="Footer Navigation" className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+                {NAV_LINKS.map((link) => (
+                  <a
+                    className="font-hand text-lg font-bold text-[#17172A] hover:underline decoration-2 underline-offset-4 transition-transform hover:translate-x-0.5"
+                    href={link.href}
+                    key={link.href}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </div>
+
+          {/* Right Column: Let's Connect */}
+          <div className="flex flex-col items-start md:items-end max-md:items-center max-md:text-center">
+            <h4 className="font-hand text-xl font-black text-[#17172A] mb-4 pb-1 border-b-2 border-dashed border-[#17172A]/30">
+              Let&apos;s Connect
+            </h4>
+            
+            {/* Irregular Sketch Icon Buttons */}
+            <div className="flex items-center gap-3">
+              {/* LinkedIn */}
+              <SketchIconButton
+                ariaLabel="LinkedIn Profile"
+                blobIndex={0}
+                className="w-11 h-11"
+                href={SITE_INFO.socials.linkedin}
+                rotation="-rotate-2"
+                shadow="pink"
+                variant="white"
               >
-                {content}
-              </a>
-            );
-          })}
-        </nav>
+                <LinkedinIcon className="w-5 h-5" />
+              </SketchIconButton>
 
-        <small className="col-span-full -mt-1 justify-self-center font-bold max-[520px]:col-auto max-[520px]:mt-1">
-          {pageContent.copyright}
-        </small>
+              {/* GitHub */}
+              <SketchIconButton
+                ariaLabel="GitHub Profile"
+                blobIndex={1}
+                className="w-11 h-11"
+                href={SITE_INFO.socials.github}
+                rotation="rotate-1"
+                shadow="pink"
+                variant="white"
+              >
+                <GithubIcon className="w-5 h-5" />
+              </SketchIconButton>
+
+              {/* Twitter / X */}
+              <SketchIconButton
+                ariaLabel="Twitter / X Profile"
+                blobIndex={2}
+                className="w-11 h-11"
+                href={SITE_INFO.socials.twitter}
+                rotation="-rotate-1"
+                shadow="pink"
+                variant="white"
+              >
+                <span className="font-sans font-black text-base">𝕏</span>
+              </SketchIconButton>
+
+              {/* Email */}
+              <SketchIconButton
+                ariaLabel="Send Email"
+                blobIndex={3}
+                className="w-11 h-11"
+                href={`mailto:${SITE_INFO.email}`}
+                rotation="rotate-2"
+                shadow="pink"
+                variant="white"
+              >
+                <MailIcon className="w-5 h-5" />
+              </SketchIconButton>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Copyright */}
+        <div className="pt-6 border-t-2 border-dashed border-[#17172A]/25 text-center">
+          <small className="font-hand text-base font-black text-[#17172A]/80">
+            {SITE_INFO.copyright}
+          </small>
+        </div>
       </div>
     </footer>
   );

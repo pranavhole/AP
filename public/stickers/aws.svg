@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 158 112">
+  <!-- Shadow -->
+  <path d="M10 16C51 7 109 11 148 17c3 23 0 56-7 80-41 5-94 4-130-2C5 70 6 39 10 16Z" fill="#2b2533" transform="translate(4 6)"/>
+  <!-- Card -->
+  <path d="M10 16C51 7 109 11 148 17c3 23 0 56-7 80-41 5-94 4-130-2C5 70 6 39 10 16Z" fill="#fff2c7" stroke="#111" stroke-width="3.2" stroke-linejoin="round"/>
+  <!-- AWS official-style wordmark: "aws" + orange smile arrow -->
+  <!-- "aws" lowercase in bold -->
+  <text x="79" y="52" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="36" font-weight="900" fill="#111" letter-spacing="-1">aws</text>
+  <!-- Orange smile arc (official AWS logo style) -->
+  <path d="M35 65 C55 82, 103 82, 123 65" fill="none" stroke="#FF9900" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Arrowhead at the right end of the arc -->
+  <path d="M118 60 L124 66 L116 69" fill="none" stroke="#FF9900" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Label -->
+  <text x="79" y="93" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#111">AWS</text>
+</svg>

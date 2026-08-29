@@ -23,19 +23,24 @@ const vercelHost =
 const deploymentSiteUrl =
   siteConfig.siteUrl ?? (vercelHost ? `https://${vercelHost}` : null);
 const metadataBase = new URL(deploymentSiteUrl ?? "http://localhost:3000");
-const title = "Pranav Hole — Freelance Full-Stack Consultant";
+const title = "Pranav Hole | Freelance Full-Stack Developer & AI Consultant";
 const description =
-  "Pranav Hole builds thoughtful web, mobile, AI, and cloud products from idea to growth.";
+  "Freelance Full-Stack Developer helping businesses build modern websites, scalable web applications, AI-powered solutions and cloud systems.";
 
 export const metadata: Metadata = {
   title: { default: title, template: "%s | Pranav Hole" },
   description,
   keywords: [
-    "Pranav Hole",
-    "full-stack developer",
-    "Next.js consultant",
-    "AI integration",
-    "cloud development",
+    "Full Stack Developer",
+    "Freelance Developer",
+    "AI Engineer",
+    "Next.js Developer",
+    "React Developer",
+    "Node.js Developer",
+    "Python Developer",
+    "Web Application Development",
+    "AI Consulting",
+    "Cloud Development",
   ],
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
@@ -53,7 +58,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: "light",
-  themeColor: "#F7C3C5",
+  themeColor: "#F6B8B8",
 };
 
 export default function RootLayout({
@@ -62,13 +67,11 @@ export default function RootLayout({
   return (
     <html
       className={`${headingFont.variable} ${bodyFont.variable} scroll-smooth bg-cream motion-reduce:scroll-auto`}
+      data-scroll-behavior="smooth"
       lang="en"
     >
       <body className="min-w-80 overflow-x-clip bg-cream font-sans text-ink [text-rendering:optimizeLegibility] selection:bg-pastel-yellow selection:text-ink [&_[id]]:scroll-mt-[calc(var(--header-height)_+_18px)] [&_:focus-visible]:outline-[3px] [&_:focus-visible]:outline-offset-4 [&_:focus-visible]:outline-purple motion-reduce:[&_*]:animate-none motion-reduce:[&_*]:scroll-auto motion-reduce:[&_*]:transition-none">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed inset-0 z-[100] bg-[radial-gradient(rgba(17,17,17,0.08)_0.55px,transparent_0.55px)] bg-[length:9px_9px] opacity-[0.18]"
-        />
+        <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[100] bg-[radial-gradient(rgb(23_23_42_/_7%)_0.55px,transparent_0.7px)] bg-[length:12px_12px] opacity-20" />
         {children}
       </body>
     </html>
