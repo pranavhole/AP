@@ -12,9 +12,12 @@ export type ServiceTone = Extract<
   "yellow" | "mint" | "pink" | "lavender"
 >;
 
-export type ProcessTone = Extract<Tone, "yellow" | "mint" | "pink">;
+export type ProcessTone = Extract<
+  Tone,
+  "yellow" | "mint" | "pink" | "lavender"
+>;
 
-export type CardVariant = 1 | 2 | 3 | 4;
+export type CardVariant = 1 | 2 | 3 | 4 | 5;
 
 export type TechnologyMark = "react" | "node" | "python" | "postgres" | "aws";
 
@@ -27,7 +30,8 @@ export type SketchIconName =
   | "wireframe"
   | "rocket"
   | "growth"
-  | "heart";
+  | "heart"
+  | "cart";
 
 export type NavItem = { label: string; href: `#${string}` };
 

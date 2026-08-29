@@ -1,48 +1,79 @@
-import { CalendarDays } from "lucide-react";
-
-import { HandDrawnArrow } from "@/components/illustrations/HandDrawnArrow";
-import { RoughButton } from "@/components/ui/RoughButton";
-import { contactLinks } from "@/config/site";
-import { pageContent } from "@/data/page-content";
+import React from "react";
+import { MessageCircle } from "lucide-react";
+import { ComicButton } from "@/components/ui/ComicButton";
+import { InquiryTriggerButton } from "@/components/ui/InquiryTriggerButton";
+import { SITE_INFO } from "@/lib/constants";
+import { PaperPlaneDoodle, Sparkle, StarDoodle, EmphasisLines } from "@/components/svg/Doodles";
 
 export function CTASection() {
-  const contact = pageContent.contact;
-
   return (
     <section
-      className="border-y-[2.5px] border-ink bg-mint py-[34px] [clip-path:polygon(0_6%,14%_1%,31%_7%,49%_2%,68%_7%,84%_1%,100%_6%,100%_95%,84%_100%,67%_94%,48%_99%,28%_94%,13%_99%,0_95%)] max-[600px]:py-11 max-[600px]:[clip-path:polygon(0_2%,23%_0,50%_3%,78%_0,100%_3%,100%_98%,77%_100%,48%_97%,21%_100%,0_97%)]"
+      aria-label="Contact and project inquiry call to action"
+      className="relative bg-mint py-16 md:py-24 px-4 overflow-hidden"
       id="contact"
+      style={{
+        backgroundImage: "radial-gradient(rgba(23, 23, 42, 0.06) 0.8px, transparent 0.8px)",
+        backgroundSize: "16px 16px",
+      }}
     >
-      <div className="mx-auto grid w-[calc(100%_-_40px)] max-w-[1280px] grid-cols-[1fr_160px_auto] items-center gap-7 py-[18px] max-[800px]:grid-cols-[1fr_auto] max-md:w-[calc(100%_-_28px)] max-[600px]:grid-cols-1 max-[600px]:text-center">
-        <div>
-          <h2 className="m-0 font-hand text-[clamp(2.25rem,4vw,3.5rem)] leading-none max-[600px]:text-[2.65rem]">
-            {contact.headingStart}{" "}
-            <mark className="inline-block bg-pastel-yellow px-[0.12em] text-inherit [rotate:-1deg]">
-              {contact.highlightedWord}
-            </mark>{" "}
-            {contact.headingEnd}
-          </h2>
-          <p className="mt-[7px] mb-0 text-[1.05rem] font-bold">
-            {contact.body}
-          </p>
-        </div>
+      {/* Decorative Doodles */}
+      <Sparkle className="absolute top-8 right-[15%] w-8 h-8 text-[#7653D8] rotate-12 max-md:hidden" />
+      <StarDoodle className="absolute bottom-8 right-[8%] w-8 h-8 text-[#F9E37D] -rotate-12 max-md:hidden" />
+      <EmphasisLines className="absolute top-10 left-[18%] w-8 h-8 text-[#17172A] -rotate-12 max-lg:hidden" />
 
-        <HandDrawnArrow className="w-40 max-[800px]:hidden" />
+      <div className="mx-auto max-w-[1100px]">
+        <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] items-center gap-8 lg:gap-12">
+          {/* Left: Hand-Drawn Paper Plane with Dotted Flight Trail */}
+          <div className="flex justify-center max-lg:order-2">
+            <PaperPlaneDoodle className="w-32 h-24 lg:w-44 lg:h-32 text-[#17172A] -rotate-6 filter drop-shadow-[2px_2px_0_rgba(23,23,42,0.1)]" />
+          </div>
 
-        <div className="relative max-[600px]:w-full">
-          <RoughButton
-            borderSeed="button-schedule-call"
-            href={contactLinks.scheduleCall}
-          >
-            Schedule a Call
-            <CalendarDays aria-hidden="true" size={19} />
-          </RoughButton>
-          <span
-            aria-hidden="true"
-            className="absolute top-[-23px] right-[-24px] font-hand text-[1.9rem] text-ink [rotate:-15deg]"
-          >
-            〽
-          </span>
+          {/* Center: Heading & Copy */}
+          <div className="text-center lg:text-left max-lg:order-1">
+            <div className="relative inline-block">
+              <h2 className="font-hand text-[clamp(2.5rem,4.5vw,4.2rem)] leading-none text-[#17172A] m-0">
+                {SITE_INFO.ctaHeading}
+              </h2>
+              {/* Hand-drawn yellow marker accent on 'mind?' */}
+              <svg
+                aria-hidden="true"
+                className="absolute -bottom-2 -left-2 right-0 h-4 w-[calc(100%+16px)] -z-10 overflow-visible"
+                preserveAspectRatio="none"
+                viewBox="0 0 200 16"
+              >
+                <path
+                  d="M 4,8 C 60,3 130,11 196,7"
+                  fill="none"
+                  stroke="#F9E37D"
+                  strokeLinecap="round"
+                  strokeWidth="8"
+                />
+              </svg>
+            </div>
+            
+            <p className="mt-5 mb-0 font-hand text-[clamp(1.2rem,1.8vw,1.6rem)] font-bold text-muted">
+              {SITE_INFO.ctaSubtext}
+            </p>
+          </div>
+
+          {/* Right: Hand-Drawn Comic Buttons */}
+          <div className="flex flex-col sm:flex-row lg:flex-col gap-4 justify-center items-center max-lg:order-3">
+            <InquiryTriggerButton
+              className="w-full sm:w-auto"
+              size="lg"
+              variant="pink"
+            >
+              Let&apos;s Talk <MessageCircle className="fill-[#DCC8F6]" size={20} strokeWidth={2.5} />
+            </InquiryTriggerButton>
+            <ComicButton
+              className="w-full sm:w-auto"
+              href={SITE_INFO.links.viewWork}
+              size="lg"
+              variant="white"
+            >
+              View Our Work
+            </ComicButton>
+          </div>
         </div>
       </div>
     </section>

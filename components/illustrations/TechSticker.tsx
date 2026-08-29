@@ -17,6 +17,7 @@ const variantClasses = {
   2: "[rotate:1deg] [animation-delay:-1.5s]",
   3: "[rotate:-0.6deg] [animation-delay:-3s]",
   4: "[rotate:0.8deg] [animation-delay:-4.5s]",
+  5: "[rotate:-1deg] [animation-delay:-6s]",
 } as const;
 
 function TechMark({ mark }: { mark: Technology["mark"] }) {

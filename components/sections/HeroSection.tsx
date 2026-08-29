@@ -1,67 +1,111 @@
-import { ArrowRight } from "lucide-react";
+import React from "react";
 
 import { HeroArtwork } from "@/components/illustrations/HeroArtwork";
-import { HandDrawnBorder } from "@/components/ui/HandDrawnBorder";
-import { RoughButton } from "@/components/ui/RoughButton";
-import { ScribbleUnderline } from "@/components/ui/ScribbleUnderline";
-import { contactLinks } from "@/config/site";
-import { pageContent } from "@/data/page-content";
-import { handDrawnBorderStyle } from "@/lib/create-hand-drawn-border";
+import { ComicButton } from "@/components/ui/ComicButton";
+import { InquiryTriggerButton } from "@/components/ui/InquiryTriggerButton";
+import { SketchTag } from "@/components/ui/SketchTag";
+import { SITE_INFO } from "@/lib/constants";
+import { Sparkle, StarDoodle, HalftoneDots } from "@/components/svg/Doodles";
 
 export function HeroSection() {
-  const hero = pageContent.hero;
-
   return (
     <section
-      className="relative min-h-[650px] border-ink bg-cream [background-image:url('/doodles/paper-grain.svg'),radial-gradient(rgba(17,17,17,0.08)_0.7px,transparent_0.7px)] [background-size:180px_180px,13px_13px] max-md:min-h-0"
+      aria-label="Dialex Technologies Hero Introduction"
+      className="relative min-h-[700px] bg-cream py-10 md:py-20 overflow-hidden"
       id="home"
+      style={{
+        backgroundImage: "radial-gradient(rgba(23, 23, 42, 0.07) 0.8px, transparent 0.8px)",
+        backgroundSize: "18px 18px",
+      }}
     >
+      {/* Decorative Mint Wedge on Left */}
       <div
         aria-hidden="true"
-        className="absolute top-0 bottom-0 left-0 w-[clamp(20px,4vw,62px)] border-r-2 border-ink bg-mint [clip-path:polygon(0_0,100%_0,54%_100%,0_100%)] max-md:w-5"
+        className="absolute top-0 bottom-0 left-0 w-[clamp(16px,3vw,48px)] border-r-2 border-ink bg-mint [clip-path:polygon(0_0,100%_0,50%_100%,0_100%)] max-md:hidden"
       />
-      <div className="mx-auto grid min-h-[650px] w-[calc(100%_-_40px)] max-w-[1280px] grid-cols-[minmax(0,1fr)_minmax(470px,0.95fr)] items-center gap-[30px] pt-[54px] pb-[38px] max-[1024px]:grid-cols-[0.95fr_1.05fr] max-md:block max-md:min-h-0 max-md:w-[calc(100%_-_28px)] max-md:pt-10 max-md:pb-3">
-        <div className="relative z-[4] pl-[clamp(20px,3vw,48px)] max-md:pl-3.5">
-          <p
-            className="relative mb-7 w-fit rounded-[var(--hand-radius)] border-2 border-transparent bg-lavender px-3.5 pt-[7px] pb-[5px] font-hand text-[clamp(0.95rem,1.4vw,1.25rem)] font-extrabold shadow-[var(--hand-shadow-x)_var(--hand-shadow-y)_0_rgb(118_83_216_/_55%)] [rotate:-0.7deg] max-md:mb-[22px]"
-            style={handDrawnBorderStyle("hero-eyebrow", "subtle")}
-          >
-            {hero.eyebrow}
-            <HandDrawnBorder seed="hero-eyebrow" strength="subtle" />
-          </p>
-          <h1 className="m-0 grid font-hand text-[clamp(3.5rem,5.4vw,5.75rem)] leading-[0.92] tracking-[0.01em] max-[1024px]:text-[clamp(3rem,5vw,4.5rem)] max-md:text-[clamp(3.05rem,14.5vw,4.3rem)] max-md:leading-[0.94]">
-            <span>{hero.headingLines[0]}</span>
-            <span>{hero.headingLines[1]}</span>
-            <span>
-              {hero.headingLines[2]}{" "}
-              <span className="relative inline-block w-fit">
-                <mark className="relative z-[1] px-[0.05em] text-inherit [background:linear-gradient(transparent_35%,var(--yellow)_35%_91%,transparent_91%)]">
-                  {hero.highlightedWord}
-                </mark>
-                <ScribbleUnderline className="absolute right-[-5px] bottom-[-9px] left-0 w-[108%]" />
+
+      {/* Decorative Background Doodles */}
+      <HalftoneDots className="absolute bottom-6 left-12 w-28 h-28 max-lg:hidden" />
+      <Sparkle className="absolute top-8 left-[38%] w-7 h-7 text-[#7653D8] -rotate-12 max-md:hidden" />
+      <StarDoodle className="absolute bottom-12 right-12 w-8 h-8 text-[#F9E37D] rotate-12 max-md:hidden" />
+
+      <div className="mx-auto w-[calc(100%_-_32px)] max-w-[1440px] grid grid-cols-1 lg:grid-cols-[0.9fr_1.25fr] items-center gap-10 lg:gap-14 px-2 sm:px-4 md:px-8">
+        {/* Left Content */}
+        <div className="relative z-10 flex flex-col items-start max-lg:items-center max-lg:text-center">
+          {/* Small Purple/Lavender Tag */}
+          <div className="mb-6">
+            <SketchTag
+              className="text-base sm:text-lg px-4 py-1.5"
+              color="lavender"
+              label={SITE_INFO.tagline}
+              variant="a"
+            />
+          </div>
+
+          {/* Main Heading */}
+          <h1 className="m-0 font-hand text-[clamp(3.2rem,5.5vw,5.5rem)] leading-[0.94] tracking-[0.01em] text-[#17172A]">
+            <span className="block">We build digital</span>
+            <span className="block">products that</span>
+            <span className="block">
+              <span className="relative inline-block px-1">
+                <span className="relative z-10">work.</span>
+                {/* Hand-drawn yellow marker highlight stroke */}
+                <svg
+                  aria-hidden="true"
+                  className="absolute inset-x-0 -bottom-1 h-6 w-[110%] -left-[5%] -z-10 overflow-visible"
+                  preserveAspectRatio="none"
+                  viewBox="0 0 120 28"
+                >
+                  <path
+                    d="M4 14 C 30 6, 85 10, 116 12 M 10 20 C 45 16, 80 18, 112 17"
+                    fill="none"
+                    stroke="#F9E37D"
+                    strokeLinecap="round"
+                    strokeWidth="12"
+                  />
+                  <path
+                    d="M6 24 C 35 22, 75 25, 114 23"
+                    fill="none"
+                    stroke="#17172A"
+                    strokeLinecap="round"
+                    strokeWidth="2.2"
+                  />
+                </svg>
               </span>
             </span>
           </h1>
-          <p className="mt-7 mb-0 font-hand text-[clamp(1.35rem,2.2vw,2rem)] font-bold max-md:mt-6 max-md:text-[1.35rem]">
-            {hero.support}
+
+          {/* Subtext */}
+          <p className="mt-6 mb-0 font-hand text-[clamp(1.25rem,2vw,1.75rem)] font-bold text-muted max-w-[500px]">
+            {SITE_INFO.subtext}
           </p>
-          <div className="mt-10 flex flex-wrap gap-5 max-md:mt-[30px] max-md:grid max-md:gap-3.5">
-            <RoughButton
-              borderSeed="button-start-project"
-              href={contactLinks.startProject}
+
+          {/* CTAs */}
+          <div className="mt-8 flex flex-wrap gap-4 max-[420px]:w-full max-[420px]:flex-col max-sm:w-full max-sm:flex-col">
+            <InquiryTriggerButton
+              className="max-[420px]:w-full max-sm:w-full"
+              service="Web Development"
+              size="lg"
+              variant="pink"
+              withArrow
             >
-              Start Your Project <ArrowRight aria-hidden="true" size={20} />
-            </RoughButton>
-            <RoughButton
-              borderSeed="button-view-work"
-              href="#work"
-              variant="paper"
+              Start Your Project
+            </InquiryTriggerButton>
+            <ComicButton
+              className="max-sm:w-full"
+              href={SITE_INFO.links.viewWork}
+              size="lg"
+              variant="white"
             >
-              View My Work
-            </RoughButton>
+              View Our Work
+            </ComicButton>
           </div>
         </div>
-        <HeroArtwork />
+
+        {/* Right Content - Enlarged Hero Video */}
+        <div className="relative z-10 w-full flex justify-center max-lg:mt-6">
+          <HeroArtwork />
+        </div>
       </div>
     </section>
   );

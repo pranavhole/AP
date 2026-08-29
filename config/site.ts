@@ -1,21 +1,23 @@
 const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || null;
 
 export const siteConfig = {
-  name: "Pranav Hole",
-  initials: "PH",
-  role: "Freelance Full-Stack Consultant",
+  name: "Dialex Technologies",
+  companyName: "DIALEX TECHNOLOGIES PRIVATE LIMITED",
+  initials: "DT",
+  role: "Full-Stack Development & AI Solutions",
   siteUrl: configuredSiteUrl,
-  contactActionsEnabled: false,
+  address: "SHOP NO. 58 ARIHANT NAGAR, HATHOJ KALWAR ROAD, Hathoj, Jaipur, Jaipur- 302012, Rajasthan",
+  contactActionsEnabled: true,
   contact: {
-    email: null as string | null,
+    email: "info@dialextech.com",
     phone: null as string | null,
     meetingUrl: null as string | null,
     resumeUrl: null as string | null,
   },
   socials: {
-    linkedin: null as string | null,
-    github: null as string | null,
-    x: null as string | null,
+    linkedin: "https://linkedin.com",
+    github: "https://github.com",
+    x: "https://x.com",
   },
   projectUrls: {
     aiEngineerWorkspace: null as string | null,

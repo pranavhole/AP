@@ -1,16 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --cream: #fff9e9;
-  --pink: #f7c3c5;
-  --mint: #bfebd9;
-  --yellow: #ffe58f;
-  --lavender: #d8c2f2;
+  --cream: #fff8e8;
+  --pink: #f6b8b8;
+  --mint: #cfebd8;
+  --yellow: #f9e37d;
+  --lavender: #dcc8f6;
+  --soft-yellow: #fff0b0;
+  --soft-green: #bfdfae;
+  --soft-blue: #bfd9f5;
+  --soft-purple: #d6c0ed;
+  --soft-red: #f5c0c0;
   --purple: #7653d8;
-  --coral: #ff9da6;
-  --ink: #111111;
-  --muted: #5e5e5e;
-  --header-height: 76px;
+  --coral: #f6b8b8;
+  --ink: #17172a;
+  --muted: #575467;
+  --white: #fffdfc;
+  --header-height: 88px;
+  --paper-shadow: 4px 4px 0 rgb(23 23 42 / 12%);
 }
 
 @theme inline {
@@ -19,6 +26,12 @@
   --color-mint: var(--mint);
   --color-pastel-yellow: var(--yellow);
   --color-lavender: var(--lavender);
+  --color-soft-yellow: var(--soft-yellow);
+  --color-soft-green: var(--soft-green);
+  --color-soft-blue: var(--soft-blue);
+  --color-soft-purple: var(--soft-purple);
+  --color-soft-red: var(--soft-red);
+  --color-paper-white: var(--white);
   --color-purple: var(--purple);
   --color-coral: var(--coral);
   --color-ink: var(--ink);
@@ -46,12 +59,46 @@
   }
 
   50% {
-    translate: 0 -7px;
+    translate: 0 -5px;
   }
 }
 
-@media (max-width: 767px) {
+@keyframes doodle-in {
+  from {
+    opacity: 0;
+    scale: 0.82;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0;
+  }
+}
+
+@keyframes soft-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 850px) {
   :root {
-    --header-height: 66px;
+    --header-height: 74px;
   }
 }

@@ -1,46 +1,107 @@
-import { SketchIcon } from "@/components/illustrations/SketchIcon";
-import { trustItems } from "@/data/trust";
-
-const toneClasses = {
-  cream: "bg-cream",
-  yellow: "bg-pastel-yellow",
-  mint: "bg-[#e8fff7]",
-  pink: "bg-soft-pink",
-  lavender: "bg-lavender",
-  purple: "bg-purple text-white",
-  coral: "bg-coral",
-} as const;
-
-const variantClasses = {
-  1: "[rotate:-4deg]",
-  2: "rounded-[55%_45%_52%_48%] [rotate:2deg]",
-  3: "rounded-[44%_56%_48%_52%] [rotate:-1deg]",
-  4: "[rotate:1deg]",
-} as const;
+import React from "react";
+import { RocketIcon, GrowthIcon, HeartIcon } from "@/components/svg/Icons";
+import { OrganicBlob, OrganicBlobVariant } from "@/components/ui/OrganicBlob";
+import { TRUST_ITEMS } from "@/lib/constants";
+import { WavyDivider } from "@/components/ui/WavyDivider";
 
 export function TrustStrip() {
+  const iconComponents = {
+    rocket: RocketIcon,
+    growth: GrowthIcon,
+    heart: HeartIcon,
+  };
+
+  const blobVariants: OrganicBlobVariant[] = ["a", "b", "c"];
+
   return (
     <section
       aria-label="Client commitments"
-      className="relative z-[3] -mt-0.5 border-y-[2.5px] border-ink bg-mint py-[26px] [clip-path:polygon(0_7%,7%_2%,17%_8%,28%_3%,41%_7%,55%_1%,68%_6%,82%_2%,100%_7%,100%_94%,90%_98%,77%_93%,63%_98%,47%_94%,31%_99%,16%_94%,0_98%)] max-[700px]:py-6 max-[700px]:[clip-path:polygon(0_2%,20%_0,48%_3%,72%_0,100%_3%,100%_98%,74%_100%,50%_97%,22%_100%,0_97%)]"
+      className="relative z-20 bg-mint"
+      style={{
+        backgroundImage: "radial-gradient(rgba(23, 23, 42, 0.06) 0.8px, transparent 0.8px)",
+        backgroundSize: "16px 16px",
+      }}
     >
-      <ul className="mx-auto my-0 grid w-[calc(100%_-_40px)] max-w-[1280px] list-none grid-cols-3 items-center py-3.5 ps-0 max-[700px]:grid-cols-1 max-[700px]:gap-2 max-md:w-[calc(100%_-_28px)]">
-        {trustItems.map((item) => (
-          <li
-            className="flex min-h-[62px] items-center justify-center gap-[13px] px-[22px] [&+&]:border-l-2 [&+&]:border-black/65 max-[700px]:justify-start max-[700px]:px-7 max-[700px]:py-[7px] max-[700px]:[&+&]:border-t-[1.5px] max-[700px]:[&+&]:border-l-0 max-[700px]:[&+&]:border-dashed max-[700px]:[&+&]:border-black/45"
-            key={item.label}
-          >
-            <span
-              className={`grid aspect-square w-[50px] flex-none place-items-center rounded-[48%_52%_44%_56%] border-2 border-ink [&_svg]:w-7 ${toneClasses[item.tone]} ${variantClasses[item.variant]}`}
-            >
-              <SketchIcon name={item.icon} />
-            </span>
-            <strong className="text-[clamp(0.94rem,1.35vw,1.15rem)]">
-              {item.label}
-            </strong>
-          </li>
-        ))}
-      </ul>
+      {/* Hand-drawn Wavy Transition from Hero (Cream #FFF8E8) to TrustStrip (Mint #CFEBD8) */}
+      <WavyDivider
+        bottomColor="#CFEBD8"
+        height={36}
+        topColor="#FFF8E8"
+        variant="sketch"
+      />
+
+      {/* Main Trust Items Content Bar */}
+      <div className="mx-auto max-w-[1280px] py-6 md:py-8 px-4">
+        <ul className="m-0 p-0 list-none grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-6 md:gap-0">
+          {TRUST_ITEMS.map((item, index) => {
+            const Icon = iconComponents[item.icon as keyof typeof iconComponents];
+            return (
+              <React.Fragment key={item.title}>
+                {/* Vertical Wavy Dashed Divider between items on desktop */}
+                {index > 0 && (
+                  <li
+                    aria-hidden="true"
+                    className="hidden md:flex items-center justify-center px-4"
+                  >
+                    <svg
+                      className="h-14 w-4 text-[#17172A]/40 overflow-visible"
+                      fill="none"
+                      viewBox="0 0 16 60"
+                    >
+                      <path
+                        d="M 8,2 C 3,12 13,22 8,32 C 3,42 13,52 8,58"
+                        stroke="currentColor"
+                        strokeDasharray="4 6"
+                        strokeLinecap="round"
+                        strokeWidth="2.2"
+                      />
+                    </svg>
+                  </li>
+                )}
+
+                <li className="flex items-center justify-center gap-4 py-2 px-6">
+                  {/* Organic Hand-drawn Icon Blob */}
+                  <OrganicBlob
+                    className="w-14 h-14"
+                    color={item.tone}
+                    shadow="ink"
+                    variant={blobVariants[index % blobVariants.length]}
+                  >
+                    <Icon className="w-6 h-6 text-[#17172A]" />
+                  </OrganicBlob>
+
+                  <strong className="font-hand text-[clamp(1.2rem,1.7vw,1.5rem)] font-black text-[#17172A]">
+                    {item.title}
+                  </strong>
+                </li>
+              </React.Fragment>
+            );
+          })}
+        </ul>
+      </div>
+
+      {/* Hand-Drawn Wavy Dashed Separator Line connecting into ServicesSection */}
+      <div
+        aria-hidden="true"
+        className="w-full max-w-[1360px] mx-auto px-4 overflow-hidden pt-2 pb-1"
+      >
+        <svg
+          className="w-full h-7 overflow-visible opacity-50"
+          preserveAspectRatio="none"
+          viewBox="0 0 1440 28"
+        >
+          {/* Playful Hand-drawn Undulating Wavy Dashed Path */}
+          <path
+            d="M 0,14 C 45,4 75,24 120,14 C 165,4 195,24 240,14 C 285,4 315,24 360,14 C 405,4 435,24 480,14 C 525,4 555,24 600,14 C 645,4 675,24 720,14 C 765,4 795,24 840,14 C 885,4 915,24 960,14 C 1005,4 1035,24 1080,14 C 1125,4 1155,24 1200,14 C 1245,4 1275,24 1320,14 C 1365,4 1395,24 1440,14"
+            fill="none"
+            stroke="#17172A"
+            strokeDasharray="7 9"
+            strokeLinecap="round"
+            strokeWidth="2.5"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
+      </div>
     </section>
   );
 }

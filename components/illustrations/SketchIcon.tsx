@@ -61,6 +61,14 @@ function IconPaths({ name }: { name: SketchIconName }) {
       );
     case "heart":
       return <path d="M16 28S4 21 4 12c0-7 9-9 12-3 3-6 12-4 12 3 0 9-12 16-12 16Z" />;
+    case "cart":
+      return (
+        <>
+          <path d="M3 4h3.5l3 14h14l2.5-9H9" />
+          <circle cx="13" cy="26" r="2" />
+          <circle cx="22" cy="26" r="2" />
+        </>
+      );
   }
 }
 

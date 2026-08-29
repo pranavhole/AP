@@ -1,10 +1,11 @@
+"use client";
+
+import React from "react";
 import { MessageCircle } from "lucide-react";
-
-import { contactLinks } from "@/config/site";
 import { navigation } from "@/data/navigation";
-
 import { BrandLockup } from "./BrandLockup";
 import { MobileMenu } from "./MobileMenu";
+import { useInquiryModal } from "@/components/context/InquiryContext";
 
 function NavbarPaper() {
   return (
@@ -28,11 +29,13 @@ function NavbarPaper() {
 }
 
 function TalkSticker() {
+  const { openInquiry } = useInquiryModal();
+
   return (
-    <a
-      aria-disabled={contactLinks.talk ? undefined : true}
-      className="group relative isolate flex min-h-12 items-center gap-2 px-6 py-3 font-hand text-lg font-bold transition-transform hover:-translate-y-0.5"
-      href={contactLinks.talk ?? undefined}
+    <button
+      className="group relative isolate flex min-h-12 items-center gap-2 px-6 py-3 font-hand text-lg font-bold text-[#17172A] transition-transform hover:-translate-y-0.5 cursor-pointer bg-transparent border-0"
+      onClick={() => openInquiry()}
+      type="button"
     >
       <svg aria-hidden="true" className="absolute inset-0 -z-10 h-full w-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
         <defs>
@@ -46,7 +49,7 @@ function TalkSticker() {
       </svg>
       LET&apos;S TALK
       <MessageCircle aria-hidden="true" className="fill-[#bda5ef] transition-transform group-hover:rotate-[-8deg]" size={19} strokeWidth={2.5} />
-    </a>
+    </button>
   );
 }
 
