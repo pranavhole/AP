@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export type ComicButtonVariant = "pink" | "yellow" | "mint" | "lavender" | "paper" | "white" | "cream";
 
-type ComicButtonProps = {
+export type ComicButtonProps = {
   children: ReactNode;
   href?: string | null;
   variant?: ComicButtonVariant;

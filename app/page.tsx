@@ -22,14 +22,6 @@ export default function Home() {
           <HeroSection />
           <TrustStrip />
           
-          {/* Hero / Trust → Services */}
-          <WavyDivider
-            bottomColor="#CFEBD8"
-            height={32}
-            topColor="#FFF8E8"
-            variant="gentle"
-          />
-
           <Reveal>
             <ServicesSection />
           </Reveal>

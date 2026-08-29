@@ -1,19 +1,16 @@
-"use client";
-
 import React from "react";
 
 import { HeroArtwork } from "@/components/illustrations/HeroArtwork";
 import { ComicButton } from "@/components/ui/ComicButton";
+import { InquiryTriggerButton } from "@/components/ui/InquiryTriggerButton";
 import { SketchTag } from "@/components/ui/SketchTag";
 import { SITE_INFO } from "@/lib/constants";
 import { Sparkle, StarDoodle, HalftoneDots } from "@/components/svg/Doodles";
-import { useInquiryModal } from "@/components/context/InquiryContext";
 
 export function HeroSection() {
-  const { openInquiry } = useInquiryModal();
-
   return (
     <section
+      aria-label="Dialex Technologies Hero Introduction"
       className="relative min-h-[700px] bg-cream py-10 md:py-20 overflow-hidden"
       id="home"
       style={{
@@ -85,15 +82,15 @@ export function HeroSection() {
 
           {/* CTAs */}
           <div className="mt-8 flex flex-wrap gap-4 max-[420px]:w-full max-[420px]:flex-col max-sm:w-full max-sm:flex-col">
-            <ComicButton
+            <InquiryTriggerButton
               className="max-[420px]:w-full max-sm:w-full"
-              onClick={() => openInquiry("Web Development")}
+              service="Web Development"
               size="lg"
               variant="pink"
               withArrow
             >
               Start Your Project
-            </ComicButton>
+            </InquiryTriggerButton>
             <ComicButton
               className="max-sm:w-full"
               href={SITE_INFO.links.viewWork}

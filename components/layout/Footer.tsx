@@ -7,6 +7,7 @@ import { SITE_INFO, NAV_LINKS } from "@/lib/constants";
 export function Footer() {
   return (
     <footer
+      aria-label="Dialex Technologies Company Footer"
       className="relative bg-[#F6B8B8] pt-14 pb-12 px-4 border-t-2 border-[#17172A] overflow-hidden"
       style={{
         backgroundImage: "radial-gradient(rgba(23, 23, 42, 0.05) 0.8px, transparent 0.8px)",
@@ -18,6 +19,7 @@ export function Footer() {
           {/* Left Column: Brand & Company Details */}
           <div className="flex flex-col items-start max-md:items-center max-md:text-center">
             <a
+              aria-label="Dialex Technologies Home"
               className="group inline-flex items-center gap-3 no-underline text-[#17172A] mb-4 transition-transform hover:-translate-y-0.5"
               href="#home"
             >
@@ -59,7 +61,7 @@ export function Footer() {
             </a>
 
             {/* Mailing Address */}
-            <div className="mt-2 text-left max-md:text-center max-w-[380px] space-y-2 bg-[#FFF8E8]/70 border-2 border-[#17172A] rounded-xl p-3.5 shadow-[2px_2px_0_#17172A]">
+            <address className="not-italic mt-2 text-left max-md:text-center max-w-[380px] space-y-2 bg-[#FFF8E8]/70 border-2 border-[#17172A] rounded-xl p-3.5 shadow-[2px_2px_0_#17172A]">
               <div className="flex items-start gap-2">
                 <MapPin className="text-[#17172A] flex-none mt-0.5" size={16} strokeWidth={2.4} />
                 <p className="text-xs font-bold text-[#17172A] leading-relaxed m-0">
@@ -77,7 +79,7 @@ export function Footer() {
                   {SITE_INFO.email}
                 </a>
               </div>
-            </div>
+            </address>
           </div>
 
           {/* Middle Column: Quick Links */}
@@ -110,7 +112,7 @@ export function Footer() {
             <div className="flex items-center gap-3">
               {/* LinkedIn */}
               <SketchIconButton
-                ariaLabel="LinkedIn Profile"
+                ariaLabel="LinkedIn Profile of Dialex Technologies"
                 blobIndex={0}
                 className="w-11 h-11"
                 href={SITE_INFO.socials.linkedin}
@@ -123,7 +125,7 @@ export function Footer() {
 
               {/* GitHub */}
               <SketchIconButton
-                ariaLabel="GitHub Profile"
+                ariaLabel="GitHub Organization of Dialex Technologies"
                 blobIndex={1}
                 className="w-11 h-11"
                 href={SITE_INFO.socials.github}
@@ -136,7 +138,7 @@ export function Footer() {
 
               {/* Twitter / X */}
               <SketchIconButton
-                ariaLabel="Twitter / X Profile"
+                ariaLabel="Twitter Profile of Dialex Technologies"
                 blobIndex={2}
                 className="w-11 h-11"
                 href={SITE_INFO.socials.twitter}
@@ -149,7 +151,7 @@ export function Footer() {
 
               {/* Email */}
               <SketchIconButton
-                ariaLabel="Send Email"
+                ariaLabel="Send Email to Dialex Technologies"
                 blobIndex={3}
                 className="w-11 h-11"
                 href={`mailto:${SITE_INFO.email}`}

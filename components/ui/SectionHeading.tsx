@@ -8,12 +8,14 @@ export function SectionHeading({
   highlight,
   tone = "yellow",
   className = "",
+  id,
 }: {
   title: string;
   subtitle?: string;
   highlight?: string;
   tone?: MarkerUnderlineColor;
   className?: string;
+  id?: string;
 }) {
   return (
     <div className={`relative mx-auto mb-10 w-fit text-center ${className}`}>
@@ -21,7 +23,10 @@ export function SectionHeading({
       <Sparkle className="absolute -top-5 -left-9 w-7 h-7 -rotate-12 text-[#17172A] max-md:hidden" />
       <StarDoodle className="absolute -top-4 -right-9 w-7 h-7 rotate-12 text-[#F9E37D] max-md:hidden" />
 
-      <h2 className="relative z-10 font-hand text-[clamp(2.5rem,4.5vw,4.2rem)] leading-none text-[#17172A]">
+      <h2
+        className="relative z-10 font-hand text-[clamp(2.5rem,4.5vw,4.2rem)] leading-none text-[#17172A]"
+        id={id}
+      >
         {title}
         {highlight && (
           <span className="relative inline-block ml-2 px-1">

@@ -1,17 +1,14 @@
-"use client";
-
 import React from "react";
 import { MessageCircle } from "lucide-react";
 import { ComicButton } from "@/components/ui/ComicButton";
+import { InquiryTriggerButton } from "@/components/ui/InquiryTriggerButton";
 import { SITE_INFO } from "@/lib/constants";
 import { PaperPlaneDoodle, Sparkle, StarDoodle, EmphasisLines } from "@/components/svg/Doodles";
-import { useInquiryModal } from "@/components/context/InquiryContext";
 
 export function CTASection() {
-  const { openInquiry } = useInquiryModal();
-
   return (
     <section
+      aria-label="Contact and project inquiry call to action"
       className="relative bg-mint py-16 md:py-24 px-4 overflow-hidden"
       id="contact"
       style={{
@@ -61,14 +58,13 @@ export function CTASection() {
 
           {/* Right: Hand-Drawn Comic Buttons */}
           <div className="flex flex-col sm:flex-row lg:flex-col gap-4 justify-center items-center max-lg:order-3">
-            <ComicButton
+            <InquiryTriggerButton
               className="w-full sm:w-auto"
-              onClick={() => openInquiry()}
               size="lg"
               variant="pink"
             >
               Let&apos;s Talk <MessageCircle className="fill-[#DCC8F6]" size={20} strokeWidth={2.5} />
-            </ComicButton>
+            </InquiryTriggerButton>
             <ComicButton
               className="w-full sm:w-auto"
               href={SITE_INFO.links.viewWork}

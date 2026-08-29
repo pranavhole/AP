@@ -29,7 +29,8 @@ export function ServicesSection() {
 
   return (
     <section
-      className="relative bg-mint py-16 md:py-24 px-4 overflow-hidden"
+      aria-labelledby="services-heading"
+      className="relative bg-mint pt-10 md:pt-16 pb-16 md:pb-24 px-4 overflow-hidden"
       id="services"
       style={{
         backgroundImage: "radial-gradient(rgba(23, 23, 42, 0.06) 0.8px, transparent 0.8px)",
@@ -37,13 +38,14 @@ export function ServicesSection() {
       }}
     >
       {/* Decorative Doodles */}
-      <Sparkle className="absolute top-12 left-[8%] w-8 h-8 text-[#17172A] -rotate-12 max-md:hidden" />
-      <Sparkle className="absolute top-20 right-[10%] w-9 h-9 text-[#F6B8B8] rotate-12 max-md:hidden" />
-      <PaperPlaneDoodle className="absolute top-8 right-6 w-24 h-16 max-lg:hidden -rotate-6" />
+      <Sparkle className="absolute top-8 left-[8%] w-8 h-8 text-[#17172A] -rotate-12 max-md:hidden" />
+      <Sparkle className="absolute top-12 right-[10%] w-9 h-9 text-[#F6B8B8] rotate-12 max-md:hidden" />
+      <PaperPlaneDoodle className="absolute top-4 right-6 w-24 h-16 max-lg:hidden -rotate-6" />
 
       <div className="mx-auto max-w-[1280px]">
         {/* Section Heading */}
         <SectionHeading
+          id="services-heading"
           subtitle="Modern web architecture, scalable systems & smart automation tailored to your business."
           title="What We Can Help You With"
           tone="yellow"
@@ -58,57 +60,69 @@ export function ServicesSection() {
             const blobColor = blobColors[index % blobColors.length];
 
             return (
-              <SketchFrame
-                className={`
-                  group flex flex-col items-center p-7 text-center transition-transform duration-200
-                  hover:-translate-y-1.5 cursor-default min-h-[310px]
-                  ${cardRotations[index % cardRotations.length]}
-                `}
-                doubleLine
-                fill="white"
+              <article
+                className="h-full"
+                itemScope
+                itemType="https://schema.org/Service"
                 key={service.id}
-                shadow="ink"
-                shadowX={5}
-                shadowY={6}
-                variant={frameVariant}
               >
-                {/* Organic Icon Bubble */}
-                <div className="mb-5 transition-transform duration-200 group-hover:scale-105">
-                  <OrganicBlob
-                    className="w-18 h-18"
-                    color={blobColor}
-                    shadow="ink"
-                    variant={blobVariant}
-                  >
-                    <Icon className="w-9 h-9 text-[#17172A]" />
-                  </OrganicBlob>
-                </div>
-
-                {/* Service Title */}
-                <h3 className="font-hand text-[1.65rem] font-bold leading-tight text-[#17172A] mb-3">
-                  {service.title}
-                </h3>
-
-                {/* Service Description */}
-                <p className="text-[0.95rem] font-bold leading-relaxed text-muted mb-5 flex-grow">
-                  {service.description}
-                </p>
-
-                {/* Hand-drawn small line near bottom */}
-                <svg
-                  aria-hidden="true"
-                  className="w-14 h-2 opacity-30 group-hover:opacity-80 transition-opacity"
-                  viewBox="0 0 60 8"
+                <SketchFrame
+                  className={`
+                    group flex flex-col items-center p-7 text-center transition-transform duration-200
+                    hover:-translate-y-1.5 cursor-default min-h-[310px] h-full
+                    ${cardRotations[index % cardRotations.length]}
+                  `}
+                  doubleLine
+                  fill="white"
+                  shadow="ink"
+                  shadowX={5}
+                  shadowY={6}
+                  variant={frameVariant}
                 >
-                  <path
-                    d="M 2,4 C 20,2 40,6 58,3"
-                    fill="none"
-                    stroke="#17172A"
-                    strokeLinecap="round"
-                    strokeWidth="2.5"
-                  />
-                </svg>
-              </SketchFrame>
+                  {/* Organic Icon Bubble */}
+                  <div className="mb-5 transition-transform duration-200 group-hover:scale-105">
+                    <OrganicBlob
+                      className="w-18 h-18"
+                      color={blobColor}
+                      shadow="ink"
+                      variant={blobVariant}
+                    >
+                      <Icon className="w-9 h-9 text-[#17172A]" />
+                    </OrganicBlob>
+                  </div>
+
+                  {/* Service Title */}
+                  <h3
+                    className="font-hand text-[1.65rem] font-bold leading-tight text-[#17172A] mb-3"
+                    itemProp="name"
+                  >
+                    {service.title}
+                  </h3>
+
+                  {/* Service Description */}
+                  <p
+                    className="text-[0.95rem] font-bold leading-relaxed text-muted mb-5 flex-grow"
+                    itemProp="description"
+                  >
+                    {service.description}
+                  </p>
+
+                  {/* Hand-drawn small line near bottom */}
+                  <svg
+                    aria-hidden="true"
+                    className="w-14 h-2 opacity-30 group-hover:opacity-80 transition-opacity"
+                    viewBox="0 0 60 8"
+                  >
+                    <path
+                      d="M 2,4 C 20,2 40,6 58,3"
+                      fill="none"
+                      stroke="#17172A"
+                      strokeLinecap="round"
+                      strokeWidth="2.5"
+                    />
+                  </svg>
+                </SketchFrame>
+              </article>
             );
           })}
         </div>

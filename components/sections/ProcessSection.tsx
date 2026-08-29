@@ -27,6 +27,7 @@ export function ProcessSection() {
 
   return (
     <section
+      aria-labelledby="process-heading"
       className="relative bg-lavender py-16 md:py-24 px-4 overflow-hidden"
       id="process"
       style={{
@@ -41,6 +42,7 @@ export function ProcessSection() {
       <div className="mx-auto max-w-[1280px]">
         {/* Section Heading */}
         <SectionHeading
+          id="process-heading"
           subtitle="A structured, transparent workflow designed to take your idea from concept to scalable reality."
           title="Our Process"
           tone="yellow"
@@ -80,6 +82,8 @@ export function ProcessSection() {
               return (
                 <li
                   className={`flex flex-col items-center text-center group transition-transform duration-200 ${offsetClass}`}
+                  itemScope
+                  itemType="https://schema.org/HowToStep"
                   key={step.step}
                 >
                   {/* Step Number Tag */}
@@ -100,12 +104,18 @@ export function ProcessSection() {
                   </div>
 
                   {/* Step Title */}
-                  <h3 className="font-hand text-[1.85rem] font-bold leading-tight text-[#17172A] mb-1">
+                  <h3
+                    className="font-hand text-[1.85rem] font-bold leading-tight text-[#17172A] mb-1"
+                    itemProp="name"
+                  >
                     {step.step}. {step.title}
                   </h3>
 
                   {/* Step Description */}
-                  <p className="text-[0.95rem] font-bold text-muted max-w-[190px] leading-snug">
+                  <p
+                    className="text-[0.95rem] font-bold text-muted max-w-[190px] leading-snug"
+                    itemProp="text"
+                  >
                     {step.description}
                   </p>
                 </li>
